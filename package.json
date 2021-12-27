@@ -1,0 +1,58 @@
+{
+  "name": "amis-widget",
+  "version": "1.0.3",
+  "description": "开发amis自定义组件的工具集",
+  "keywords": [
+    "amis自定义组件",
+    "amis-editor自定义插件"
+  ],
+  "author": "fex",
+  "license": "MIT",
+  "main": "dist/index.umd.js",
+  "scripts": {
+    "dev": "akfun dev",
+    "build2lib": "akfun build2lib",
+    "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+  },
+  "files": [
+    "dist/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@github.com:aisuda/amis-widget.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aisuda/amis-widget/issues"
+  },
+  "dependencies": {
+    "amis": "^1.5.7",
+    "amis-editor": "^4.0.1-beta.18",
+    "axios": "^0.24.0",
+    "jquery": "^3.5.1",
+    "react": "^16.8.6",
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^9.1.1",
+    "akfun": "^1.5.16",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.4.1"
+  }
+}

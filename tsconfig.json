@@ -1,0 +1,71 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    /* Basic Options */
+    "target": "esnext",
+    /* 指定编译之后的版本: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    "module": "esnext" /* 指定要使用的模板标准: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
+    // "lib": [],                             /* Specify library files to be included in the compilation. */
+    "allowJs": false /* 指定是否允许编译JS文件，默认false,即不编译JS文件. */,
+    // "checkJs": true,                       /* 指定是否检查和报告JS文件中的错误，默认false */
+    "jsx": "react" /* 指定jsx代码用于的开发环境:'preserve','react-native', or 'react'. */,
+    "declaration": false /* 指定是否在编译的时候生成相的d.ts声明文件 */,
+    // "declarationMap": true,                /* 指定编译时是否生成.map文件 */
+    // "sourceMap": true,                     /* 指定编译时是否生成.map文件 */
+    // "outFile": "./",                       /* 指定输出文件合并为一个文件 */
+    // "outDir": "amis-widget", /* 指定输出文件夹，值为一个文件夹路径字符串，输出的文件都将放置在这个文件夹*/
+    // "rootDir": "src", /* 指定编译文件的根目录，编译器会在根目录查找入口文件 */
+    // "composite": true,                     /* 是否编译构建引用项目 */
+    // "removeComments": true,                /* 指定是否将编译后的文件注释删掉，设为true的话即删除注释，默认为false */
+    "noEmit": false /* 不生成编译文件 */,
+    "importHelpers": true /* 指定是否引入tslib里的复制工具函数，默认为false */,
+    // "downlevelIteration": true,            /* 当target为"ES5"或"ES3"时，为"for-of" "spread"和"destructuring"中的迭代器提供完全支持 */
+    "isolatedModules": false /* 指定是否将每个文件作为单独的模块，默认为true */,
+
+    /* Strict Type-Checking Options */
+    "strict": false /* 指定是否启动所有类型检查 */,
+    "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
+    "strictNullChecks": true /* Enable strict null checks. */,
+    // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
+    // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
+    "noImplicitThis": true /* Raise error on 'this' expressions with an implied 'any' type. */,
+    // "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
+
+    /* Additional Checks */
+    "noUnusedLocals": true /* Report errors on unused locals. */,
+    // "noUnusedParameters": true,            /* Report errors on unused parameters. */
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
+
+    /* Module Resolution Options */
+    "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
+    "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
+    "paths": {
+      "@": ["./src"],
+    },                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
+    /* 指定声明文件或文件夹的路径列表，如果指定了此项，则只有在这里列出的声明文件才会被加载 */
+    "typeRoots": [
+      "./@types",
+      "./node_modules/@types"
+    ],
+    // "types": [],                           /* 指定需要包含的模块，只有在这里列出的模块的声明文件才会被加载 */
+    "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */,
+    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
+    // "preserveSymlinks": true,              /* Do not resolve the real path of symlinks. */
+
+    /* Source Map Options */
+    // "sourceRoot": "./",                    /* Specify the location where debugger should locate TypeScript files instead of source locations. */
+    // "mapRoot": "./",                       /* Specify the location where debugger should locate map files instead of generated locations. */
+    // "inlineSourceMap": true,               /* Emit a single file with source maps instead of having a separate file. */
+    // "inlineSources": true,                 /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
+
+    /* Experimental Options */
+    // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+    // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+    "suppressImplicitAnyIndexErrors": true /* Suppress --noImplicitAny errors for indexing objects lacking index signatures. See issue #1232 for more details. */
+  },
+  "include": ["src", "test"],
+  "exclude": ["node_modules"]
+}
