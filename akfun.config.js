@@ -16,7 +16,7 @@ module.exports = {
   webpack: {
     resolve: {
       // webpack的resolve配置
-      extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
         $function: resolve('src/function'),
@@ -33,8 +33,8 @@ module.exports = {
       index: [
         './demo/react-select/react-select.jsx',
         './demo/react-select/plugin/react-select-plugin.jsx',
-        './demo/vue-text/vue-text.jsx',
-        './demo/vue-text/plugin/vue-text-plugin.jsx',
+        './demo/vue-widget/index.js',
+        './demo/vue-widget/plugin/info-card-plugin.jsx',
         './demo/hello-jquery/hello-jquery.jsx',
         './demo/hello-jquery/plugin/hello-jquery-plugin.jsx',
         './demo/editor/EditorDemo.jsx'

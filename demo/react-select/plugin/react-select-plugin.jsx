@@ -72,7 +72,7 @@ registerAmisEditorPlugin(ReactSelectPlugin, {
   rendererName: 'react-select',
   name: 'react-select',
   // description: '自定义组件描述',
-  tags: ['自定义组件'],
+  // tags: ['自定义'],
   order: 100,
   // icon: 'fa fa-file-code-o',
   panelTitle: '配置',
