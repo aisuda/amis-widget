@@ -106,7 +106,7 @@ export function registerRendererByType(
     const resolverMap: any = {
       react: (i: any) => i,
       vue2: createVue2Component,
-      // 'vue3': createVue3Component,
+      vue3: createVue2Component, // createVue3Component,
       jquery: createJQComponent,
     };
     // 支持多技术栈

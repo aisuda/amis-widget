@@ -42,7 +42,7 @@ export function getFramework(_framework?: string): string {
 export enum Framework {
   react = 'react',
   vue2 = 'vue2',
-  vue3 = 'vue2', // vue3
+  vue3 = 'vue3',
   jquery = 'jquery',
 }
 
