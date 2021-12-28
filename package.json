@@ -47,7 +47,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "akfun": "^1.5.16",
+    "akfun": "^1.5.19",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"
