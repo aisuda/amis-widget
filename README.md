@@ -6,6 +6,9 @@
 - registerRendererByType: 根据type类型注册 amis普通渲染器、amis表单渲染器、amis表单控件渲染器
 - registerAmisEditorPlugin: 注册 amis-editor 插件
 
+### 在线Demo
+[点击访问在线Demo](https://aisuda.github.io/amis-widget/test/preview.html)
+
 ## 快速使用
 
 ```
