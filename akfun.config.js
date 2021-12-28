@@ -31,8 +31,8 @@ module.exports = {
   dev: {
     entry: { // 调试模式的入口
       index: [
-        './demo/react-select/react-select.jsx',
-        './demo/react-select/plugin/react-select-plugin.jsx',
+        './demo/react-widget/index.js',
+        './demo/react-widget/plugin/info-card-plugin.jsx',
         './demo/vue-widget/index.js',
         './demo/vue-widget/plugin/info-card-plugin.jsx',
         './demo/hello-jquery/hello-jquery.jsx',

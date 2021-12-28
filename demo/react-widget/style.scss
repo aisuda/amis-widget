@@ -1,0 +1,70 @@
+.news-card {
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ececec;
+  margin: 0 12px;
+  padding-bottom: 12px;
+
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+
+  .news-title {
+    padding: 6px 0;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    line-height: 22px;
+    color: #5f5e5e;
+  }
+
+  .item-imgbox {
+    position: relative;
+    height: 395px;
+    background: #f0f0f0;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+
+    .news-img {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      background-size: cover;
+    }
+
+    .img-count {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 6px 8px;
+      color: #fff;
+      min-width: 60px;
+      text-align: center;
+      line-height: 1.2;
+      background: rgba(0, 0, 0, 0.4);
+      font-size: 25px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+  }
+
+  .news-info {
+    font-family: PingFangSC-Light;
+    height: 28px;
+    box-sizing: border-box;
+  }
+
+  .media-mark,
+  .cmt-num {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    font-family: PingFangSC-Light;
+    font-size: 18px;
+    color: #828282;
+  }
+}
