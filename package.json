@@ -10,9 +10,9 @@
   "license": "MIT",
   "main": "dist/index.umd.js",
   "scripts": {
-    "dev": "akfun dev",
-    "build2lib": "akfun build2lib",
-    "build": "akfun build",
+    "dev": "amis dev",
+    "build2lib": "amis build2lib",
+    "build": "amis build",
     "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
   },
   "files": [
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "akfun": "^1.5.19",
+    "amis-widget-cli": "^1.0.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"
