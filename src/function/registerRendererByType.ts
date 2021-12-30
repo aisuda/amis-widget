@@ -9,7 +9,7 @@ import { createVue2Component } from '../frameworkFactory/vueFactory';
 import {
   getFramework,
   Framework,
-  addCutomPrefixType,
+  addCustomPrefixType,
   isString,
   consoleTag,
 } from '../utils';
@@ -92,7 +92,7 @@ export function registerRendererByType(
     );
   } else {
     // 增加NpmCustom前缀
-    curRendererOption.type = addCutomPrefixType(curRendererOption.type);
+    curRendererOption.type = addCustomPrefixType(curRendererOption.type);
     // 修复framework数值
     curRendererOption.framework = getFramework(curRendererOption.framework);
     // 当前支持注册的渲染器类型

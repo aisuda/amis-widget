@@ -85,14 +85,14 @@ export function isEditorPlugin(EditorPluginClass: any) {
       });
     }
     // 2.添加自定义组件前缀
-    addNpmCutomPrefixByProto(EditorPluginClass.prototype);
+    addNpmCustomPrefixByProto(EditorPluginClass.prototype);
     _isEditorPlugin = true;
   }
   return _isEditorPlugin;
 }
 
 // 给当前自定义组件增加特殊前缀
-export function addNpmCutomPrefixByProto(_editorPluginPrototype: any) {
+export function addNpmCustomPrefixByProto(_editorPluginPrototype: any) {
   if (!_editorPluginPrototype) {
     return;
   }
@@ -138,7 +138,7 @@ export function addNpmCutomPrefixByProto(_editorPluginPrototype: any) {
 }
 
 // 给当前自定义组件增加特殊前缀
-export function addNpmCutomPrefixByClass(
+export function addNpmCustomPrefixByClass(
   _editorPluginClass: any,
   _editorPluginObj_: any,
 ) {
@@ -192,7 +192,7 @@ export function addNpmCutomPrefixByClass(
 }
 
 // 给当前自定义组件增加特殊前缀（custom-）
-export function addCutomPrefixType(_type: string) {
+export function addCustomPrefixType(_type: string) {
   let curType = _type;
   if (!_type) {
     return curType;
