@@ -31,13 +31,13 @@ module.exports = {
   dev: {
     entry: { // 调试模式的入口
       index: [
+        './demo/editor/EditorDemo.jsx',
         './demo/react-widget/index.js',
         './demo/react-widget/plugin/info-card-plugin.jsx',
         './demo/vue-widget/index.js',
         './demo/vue-widget/plugin/info-card-plugin.jsx',
         './demo/hello-jquery/hello-jquery.jsx',
         './demo/hello-jquery/plugin/hello-jquery-plugin.jsx',
-        './demo/editor/EditorDemo.jsx'
       ],
     },
     // 用于开启本地调试模式的相关配置信息
