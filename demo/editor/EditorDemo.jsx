@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Editor} from 'amis-editor';
 import 'amis-editor/dist/style.css';
 import {__uri} from 'amis/lib/utils/helper';
+import './mod.js';
 // import styles
 import 'amis/lib/themes/default.css';
 import 'amis/lib/themes/cxd.css';
