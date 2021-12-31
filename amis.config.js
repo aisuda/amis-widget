@@ -24,7 +24,7 @@ module.exports = {
       },
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件
-    ignoreNodeModules: true, // 打包时是否忽略 node_modules
+    ignoreNodeModules: false, // 打包时是否忽略 node_modules
     projectDir: ['src', 'demo'],
     template: resolve('./demo/editor/index.html'), // dev本地调试时需要html模板
   },
