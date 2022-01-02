@@ -60,7 +60,7 @@ module.exports = {
         './demo/hello-jquery/plugin/hello-jquery-plugin.jsx',
         './demo/editor/EditorDemo.jsx'
       ],
-      editor: './demo/editor/EditorDemo.jsx',
+      // editor: './demo/editor/EditorDemo.jsx',
     },
     // 用于构建生产环境代码的相关配置信息
     NODE_ENV: 'production',
