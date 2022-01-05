@@ -1,6 +1,7 @@
 // @ts-ignore
-import { registerEditorPlugin, BasePlugin } from 'amis-editor'; // getEditorPlugins
-export { getSchemaTpl } from 'amis-editor';
+import { registerEditorPlugin, BasePlugin } from 'amis-editor/dist/exports'; // getEditorPlugins
+// @ts-ignore
+export { getSchemaTpl } from 'amis-editor/dist/exports';
 import { isEditorPlugin, consoleTag } from '../utils';
 /**
  * 自定义editor插件配置项
@@ -83,11 +84,13 @@ export function registerAmisEditorPlugin(
   // 将用户的配置属性设置到新插件对象的prototype中
   Object.assign(newEditorPlugin.prototype, pluginOption);
   if (isEditorPlugin(newEditorPlugin)) {
-    // 注册为amis-editor插件
-    // @ts-ignore
-    registerEditorPlugin(newEditorPlugin);
+    Object.assign(newEditorPlugin.prototype, {
+      isNpmCustomWidget: true, // npm自定义插件标识
+    });
     // const curEditorPlugins:any = getEditorPlugins();
     const newEditorPluginPrototype: any = newEditorPlugin.prototype;
+    // 注册为amis-editor插件
+    registerEditorPlugin(newEditorPlugin);
     // 触发sessionStorageChange：告知amis-editor
     if (window && window.postMessage) {
       window.postMessage(
