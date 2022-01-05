@@ -32,7 +32,7 @@ module.exports = {
   dev: {
     entry: { // 调试模式的入口
       index: [
-        // './demo/editor/EditorDemo.jsx',
+        './demo/editor/EditorDemo.jsx',
         './demo/react-widget/index.js',
         './demo/react-widget/plugin/info-card-plugin.jsx',
         './demo/vue-widget/index.js',
