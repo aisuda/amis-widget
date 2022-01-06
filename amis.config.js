@@ -98,7 +98,7 @@ module.exports = {
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    openMonacoWebpackPlugin: false, // amis-editor需要
+    openMonacoWebpackPlugin: true, // amis-editor需要
     bundleAnalyzerReport: false,
   },
   build: {
@@ -113,7 +113,7 @@ module.exports = {
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    openMonacoWebpackPlugin: false, // amis-editor需要
+    openMonacoWebpackPlugin: true, // amis-editor需要
     bundleAnalyzerReport: false,
   },
   build2lib: {
