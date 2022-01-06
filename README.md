@@ -54,10 +54,10 @@ class MyReactSelect extends React.PureComponent {
     );
   }
 }
-
+// 注册amis普通渲染器
 registerRendererByType(MyReactSelect, {
   type: 'react-select',
-  usage: 'renderer',
+  usage: 'renderer', // formitem: amis表单渲染器、options: amis表单控件渲染器
   weight: 100,
   framework: 'react'
 });
@@ -70,13 +70,13 @@ export default MyReactSelect;
 import { registerAmisEditorPlugin } from 'amis-widget';
 
 class ReactSelectPlugin {
-  rendererName = 'react-select';
+  rendererName = 'react-select'; // 对应的amis渲染器
   $schema = '/schemas/UnkownSchema.json';
   name = 'react-select';
   description = 'react-select';
-  tags = ['自定义'];
+  tags = ['展示']; // 自定义组件分类
   icon = 'fa fa-file-code-o';
-  scaffold = {
+  scaffold = { // 插入到页面时需要
     type: 'react-select',
     label: 'react-select',
     name: 'react-select',
@@ -95,7 +95,7 @@ class ReactSelectPlugin {
       }
     ]
   };
-  previewSchema = {
+  previewSchema = { // 组件面板预览时需要
     type: 'react-select',
     label: 'react-select',
     options: [
@@ -113,9 +113,8 @@ class ReactSelectPlugin {
       }
     ]
   };
-
-  panelTitle = '下拉框';
-  panelBody = [
+  panelTitle = '下拉框'; // 右侧属性面板Title
+  panelBody = [ // 右侧属性面板配置项
     {
       type: 'input-text',
       name: 'label',
@@ -134,7 +133,7 @@ class ReactSelectPlugin {
     }
   ];
 }
-
+// 注册一个amis-editor插件（仅页面设计器需要，会在自定义组件面板中展示）
 registerAmisEditorPlugin(ReactSelectPlugin, {
   rendererName: 'react-select',
   name: 'react-select',
