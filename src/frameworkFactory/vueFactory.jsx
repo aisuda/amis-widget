@@ -5,7 +5,7 @@ import React from 'react';
 import Vue from 'vue/dist/vue.min';
 import { extendObject } from 'amis/lib/utils/helper';
 
-export const createVue2Component = (vueObj) => {
+export function createVue2Component(vueObj) {
   if (!vueObj || (typeof vueObj !== 'function' && typeof vueObj !== 'object')) {
     return;
   }
@@ -79,4 +79,4 @@ export const createVue2Component = (vueObj) => {
   }
 
   return VueFactory;
-};
+}

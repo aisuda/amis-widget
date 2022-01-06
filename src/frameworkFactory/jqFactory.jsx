@@ -4,7 +4,7 @@
 import React from 'react';
 import 'jquery';
 
-export const createJQComponent = (jqueryObj) => {
+export function createJQComponent(jqueryObj) {
   if (
     !jqueryObj ||
     (typeof jqueryObj !== 'function' && typeof jqueryObj !== 'object')
@@ -63,4 +63,4 @@ export const createJQComponent = (jqueryObj) => {
   }
 
   return JQFactory;
-};
+}

@@ -25,6 +25,7 @@ module.exports = {
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
+    allowList: [], // ignoreNodeModules为true时生效
     externals: [],
     projectDir: ['src', 'demo'],
     template: resolve('./demo/editor/index.html'), // dev本地调试时需要html模板
@@ -51,7 +52,31 @@ module.exports = {
     assetsSubDirectory: '',
     hostname: 'localhost',
     cssSourceMap: false,
-    closeHotReload: true,
+    closeHotReload: false, // 是否关闭热更新
+  },
+  dev2: {
+    entry: { // 调试模式的入口
+      index: [
+        './demo2/editor/EditorDemo.jsx',
+        './demo2/react-widget/index.js',
+        './demo2/react-widget/plugin/info-card-plugin.jsx',
+        './demo2/vue-widget/index.js',
+        './demo2/vue-widget/plugin/info-card-plugin.jsx',
+        './demo2/hello-jquery/hello-jquery.jsx',
+        './demo2/hello-jquery/plugin/hello-jquery-plugin.jsx',
+      ],
+    },
+    // 用于开启本地调试模式的相关配置信息
+    NODE_ENV: 'development',
+    ignoreNodeModules: false, // 打包时是否忽略 node_modules
+    // allowList: ['react', 'react-dow', /^@babel\/runtime\/helpers/, 'jquery', 'vue', 'amis', 'object-assign'],
+    port: 80,
+    autoOpenBrowser: true,
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    cssSourceMap: false,
+    closeHotReload: false, // 是否关闭热更新
   },
   build1: {
     entry: { // webpack构建入口
@@ -102,6 +127,8 @@ module.exports = {
     assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
+    ignoreNodeModules: false, // 打包时是否忽略 node_modules
+    allowList: [], // ignoreNodeModules为true时生效
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
