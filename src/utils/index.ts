@@ -6,7 +6,7 @@ export const consoleTag = '[amis-widget]'; // 输出标记
  * 目的：兼容用户非标准写法
  */
 export function getFramework(_framework?: string): string {
-  let defaultFramework = 'react';
+  let defaultFramework = Framework.react;
   if (!_framework) {
     return defaultFramework;
   }
@@ -33,6 +33,44 @@ export function getFramework(_framework?: string): string {
       curFramework = Framework.react;
   }
   return curFramework;
+}
+
+export enum Usage {
+  renderer = 'renderer',
+  formitem = 'formitem',
+  options = 'options',
+}
+/**
+ * 获取amis渲染器类型标识
+ * 目的：兼容用户非标准写法
+ */
+export function getUsage(_usage?: string): string {
+  let defaultUsage = Usage.renderer;
+  if (!_usage) {
+    return defaultUsage;
+  }
+  let curUsage = _usage.toLowerCase().trim();
+  switch (curUsage) {
+    case 'renderer':
+    case 'renderers':
+      curUsage = Usage.renderer;
+      break;
+    case 'formitem':
+    case 'form-item':
+    case 'form item':
+      curUsage = Usage.formitem;
+      break;
+    case 'options':
+    case 'option':
+    case 'formoption':
+    case 'form-option':
+    case 'form option':
+      curUsage = Usage.options;
+      break;
+    default:
+      curUsage = Usage.renderer;
+  }
+  return curUsage;
 }
 
 /**

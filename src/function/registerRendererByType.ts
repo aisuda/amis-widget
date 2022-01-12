@@ -12,6 +12,8 @@ import { createVue2Component } from '../frameworkFactory/vueFactory';
 // import {createVue3Component} from '../frameworkFactory/vue3Factory';
 import {
   getFramework,
+  Usage,
+  getUsage,
   Framework,
   addCustomPrefixType,
   isString,
@@ -37,7 +39,7 @@ export interface AmisRendererOption {
 
   /**
    * 自定义组件权重
-   * 备注：权重值越大则优先查找
+   * 备注：值越低越优先命中
    */
   weight?: number;
 
@@ -46,12 +48,6 @@ export interface AmisRendererOption {
    * 备注：默认为react
    */
   framework?: string;
-}
-
-export enum Usage {
-  renderer = 'renderer',
-  formitem = 'formitem',
-  options = 'options',
 }
 
 /**
@@ -97,8 +93,10 @@ export function registerRendererByType(
   } else {
     // 增加NpmCustom前缀
     curRendererOption.type = addCustomPrefixType(curRendererOption.type);
-    // 修复framework数值
+    // 修正framework数值
     curRendererOption.framework = getFramework(curRendererOption.framework);
+    // 修正usage数值
+    curRendererOption.usage = getUsage(curRendererOption.usage);
     // 当前支持注册的渲染器类型
     const registerMap: any = {
       renderer: Renderer,
@@ -117,12 +115,12 @@ export function registerRendererByType(
     const curRendererComponent =
       resolverMap[curRendererOption.framework](newRenderer);
     // 注册amis渲染器
-    if (!registerMap[curRendererOption.usage || 'renderer']) {
+    if (!registerMap[curRendererOption.usage]) {
       console.error(
         `${consoleTag}自定义组件注册失败，不存在${curRendererOption.usage}自定义组件类型。`,
       );
     } else {
-      registerMap[curRendererOption.usage || 'renderer']({
+      registerMap[curRendererOption.usage]({
         type: curRendererOption.type,
         weight: curRendererOption.weight,
       })(curRendererComponent);

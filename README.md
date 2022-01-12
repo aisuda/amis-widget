@@ -1,6 +1,8 @@
 # amis-widget
 > 开发amis自定义组件的工具集
-- 提供注册amis组件和amis-editor插件的方法。
+- 提供注册amis组件和amis-editor插件的方法；
+- 目前支持的技术栈：jQuery、vue2、react，vue3技术栈后续单独支持；
+- 支持的amis渲染器类型：renderer（amis普通渲染器）、formitem（amis表单渲染器）、options（amis表单控件渲染器）。
 
 ### 提供的方法
 - registerRendererByType: 根据type类型注册 amis普通渲染器、amis表单渲染器、amis表单控件渲染器
