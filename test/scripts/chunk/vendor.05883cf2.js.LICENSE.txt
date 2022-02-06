@@ -15,10 +15,27 @@ object-assign
  */
 
 /*!
+ * Sizzle CSS Selector Engine v2.3.6
+ * https://sizzlejs.com/
+ *
+ * Copyright JS Foundation and other contributors
+ * Released under the MIT license
+ * https://js.foundation/
+ *
+ * Date: 2021-02-16
+ */
+
+/*!
+ * Vue.js v2.6.14
+ * (c) 2014-2021 Evan You
+ * Released under the MIT License.
+ */
+
+/*!
  * amis-widget v1.2.1
  * author: fex
  * build tool: AKFun
- * build time: Sun Feb 06 2022 15:38:51 GMT+0800 (China Standard Time)
+ * build time: Sun Feb 06 2022 15:35:09 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */
 
@@ -30,6 +47,20 @@ object-assign
  * http://jaywcjlove.github.io/hotkeys
  * 
  * Licensed under the MIT license.
+ */
+
+/*!
+ * jQuery JavaScript Library v3.6.0
+ * https://jquery.com/
+ *
+ * Includes Sizzle.js
+ * https://sizzlejs.com/
+ *
+ * Copyright OpenJS Foundation and other contributors
+ * Released under the MIT license
+ * https://jquery.org/license
+ *
+ * Date: 2021-03-02T17:08Z
  */
 
 /*! *****************************************************************************
