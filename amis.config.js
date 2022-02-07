@@ -131,12 +131,12 @@ module.exports = {
     assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
-    ignoreNodeModules: true, // 打包时是否忽略 node_modules
+    ignoreNodeModules: false, // 打包时是否忽略 node_modules
     allowList: [], // ignoreNodeModules为true时生效
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    bundleAnalyzerReport: true,
+    bundleAnalyzerReport: false,
   },
   build2esm: {
     input: resolve('src/main.ts'),
