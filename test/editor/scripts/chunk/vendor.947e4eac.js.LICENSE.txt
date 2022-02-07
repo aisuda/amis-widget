@@ -18,7 +18,7 @@ object-assign
  * amis-widget v1.2.3
  * author: fex
  * build tool: AKFun
- * build time: Mon Feb 07 2022 15:52:59 GMT+0800 (China Standard Time)
+ * build time: Mon Feb 07 2022 16:35:38 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */
 
@@ -108,7 +108,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license amis v1.6.4
+/** @license amis v1.6.0
  *
  * Copyright Baidu
  *
