@@ -5,3 +5,5 @@
  * build time: Mon Feb 07 2022 15:11:34 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */
+
+/*! For license information please see index.umd.js.LICENSE.txt */
