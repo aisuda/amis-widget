@@ -116,6 +116,9 @@ module.exports = {
     productionGzipExtensions: ['js', 'css', 'json'],
     openMonacoWebpackPlugin: false, // amis-editor/code模式需要
     bundleAnalyzerReport: false,
+    externals: {
+      'amis': 'commonjs2 amis'
+    }
   },
   build2lib: {
     entry: {
