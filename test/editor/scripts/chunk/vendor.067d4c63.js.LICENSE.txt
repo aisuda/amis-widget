@@ -15,10 +15,10 @@ object-assign
  */
 
 /*!
- * amis-widget v1.2.2
+ * amis-widget v1.2.3
  * author: fex
  * build tool: AKFun
- * build time: Mon Feb 07 2022 15:12:42 GMT+0800 (China Standard Time)
+ * build time: Mon Feb 07 2022 15:46:26 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */
 
