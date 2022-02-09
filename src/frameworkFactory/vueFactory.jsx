@@ -2,8 +2,8 @@
  * @file 自定义组件所需的 vue2.0 对接
  */
 import React from 'react';
-import Vue from 'vue/dist/vue.min';
-import { extendObject } from 'amis/lib/utils/helper';
+import Vue from 'vue';
+import { utils } from 'amis';
 
 export function createVue2Component(vueObj) {
   if (!vueObj || (typeof vueObj !== 'function' && typeof vueObj !== 'object')) {
@@ -28,7 +28,7 @@ export function createVue2Component(vueObj) {
 
       // 传入的Vue属性
       this.vm = new Vue({
-        data: extendObject(
+        data: utils.extendObject(
           amisData,
           typeof data === 'function' ? data() : data,
         ),

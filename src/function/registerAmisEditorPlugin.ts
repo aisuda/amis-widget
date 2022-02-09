@@ -1,7 +1,4 @@
-// @ts-ignore
-import { registerEditorPlugin, BasePlugin } from 'amis-editor/dist/exports'; // getEditorPlugins
-// @ts-ignore
-export { getSchemaTpl } from 'amis-editor/dist/exports';
+import { registerEditorPlugin, BasePlugin, getSchemaTpl } from 'amis-editor'; // getEditorPlugins
 import { isEditorPlugin, consoleTag } from '../utils';
 /**
  * 自定义editor插件配置项
@@ -110,3 +107,5 @@ export function registerAmisEditorPlugin(
   }
   return newEditorPlugin;
 }
+
+export { getSchemaTpl };
