@@ -1,9 +1,5 @@
 // import {registerFormItem, registerOptionsControl, registerRenderer} from 'amis';
-// @ts-ignore
-import { Renderer } from 'amis/lib/factory';
-import { FormItem } from 'amis/lib/renderers/Form/Item';
-import { OptionsControl } from 'amis/lib/renderers/Form/Options';
-// import { Renderer, FormItem, OptionsControl } from 'amis';
+import { Renderer, FormItem, OptionsControl } from 'amis';
 // @ts-ignore
 import { createJQComponent } from '../frameworkFactory/jqFactory';
 // @ts-ignore
