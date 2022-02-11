@@ -34,7 +34,7 @@ module.exports = {
     template: resolve('./demo/editor/index.html'), // dev本地调试时需要html模板
     cssLoaderUrl: true
   },
-  dev: {
+  dev1: {
     entry: { // 调试模式的入口
       index: [
         './demo/editor/EditorDemo.jsx',
@@ -58,7 +58,7 @@ module.exports = {
     cssSourceMap: false,
     closeHotReload: false, // 是否关闭热更新
   },
-  dev2: {
+  dev: {
     entry: { // 调试模式的入口
       index: [
         './demo2/editor/EditorDemo.jsx',
@@ -131,7 +131,7 @@ module.exports = {
     assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
-    ignoreNodeModules: false, // 打包时是否忽略 node_modules
+    ignoreNodeModules: true, // 打包时是否忽略 node_modules
     // allowList: ['jquery', 'vue'], // ignoreNodeModules为true时生效
     productionSourceMap: false,
     productionGzip: false,
