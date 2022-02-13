@@ -30,7 +30,7 @@ module.exports = {
     /*externals: [{
       amis: 'commonjs2 amis'
     }],*/
-    projectDir: ['src', 'demo'],
+    projectDir: ['src', 'demo', 'demo2'],
     template: resolve('./demo/editor/index.html'), // dev本地调试时需要html模板
     cssLoaderUrl: true
   },
@@ -102,7 +102,6 @@ module.exports = {
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    openMonacoWebpackPlugin: false, // amis-editor/code模式需要
     bundleAnalyzerReport: false,
   },
   build: {
@@ -117,7 +116,6 @@ module.exports = {
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    openMonacoWebpackPlugin: false, // amis-editor/code模式需要
     bundleAnalyzerReport: false,
   },
   build2lib: {
