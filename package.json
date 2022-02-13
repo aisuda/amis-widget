@@ -11,10 +11,8 @@
   "main": "dist/index.umd.js",
   "scripts": {
     "dev": "amis dev",
-    "build2lib": "amis build2lib",
-    "inspect": "amis inspect -t=lib",
     "build": "amis build",
-    "build2esm": "amis build2esm -index",
+    "build2lib": "amis build2lib",
     "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
   },
   "files": [

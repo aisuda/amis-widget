@@ -27,17 +27,13 @@ module.exports = {
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
     allowList: [], // ignoreNodeModules为true时生效
     externals: [],
-    /*externals: [{
-      amis: 'commonjs2 amis'
-    }],*/
-    projectDir: ['src', 'demo', 'demo2'],
-    template: resolve('./demo/editor/index.html'), // dev本地调试时需要html模板
+    projectDir: ['src', 'demo', 'demo2', 'editor'],
+    template: resolve('./editor/index.html'), // 使用自己的html模板
     cssLoaderUrl: true
   },
-  dev1: {
-    entry: { // 调试模式的入口
+  dev: {
+    entry: { // 调试模式的入口1
       index: [
-        './demo/editor/EditorDemo.jsx',
         './demo/react-widget/index.js',
         './demo/react-widget/plugin/info-card-plugin.jsx',
         './demo/vue-widget/index.js',
@@ -57,11 +53,11 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: false,
     closeHotReload: false, // 是否关闭热更新
+    closeEditorClient: false, // 是否关闭自动注入editor
   },
-  dev: {
-    entry: { // 调试模式的入口
+  dev2: {
+    entry: { // 本地调试模式的入口2
       index: [
-        './demo2/editor/EditorDemo.jsx',
         './demo2/react-widget/index.js',
         './demo2/react-widget/plugin/info-card-plugin.jsx',
         './demo2/vue-widget/index.js',
@@ -81,11 +77,12 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: false,
     closeHotReload: true, // 是否关闭热更新
+    closeEditorClient: false, // 是否关闭自动注入editor
   },
-  build1: {
+  build: {
     entry: { // webpack构建入口
       preview: [
-        './demo/editor/EditorDemo.jsx',
+        './editor/EditorDemo.jsx',
         './demo/react-widget/index.js',
         './demo/react-widget/plugin/info-card-plugin.jsx',
         './demo/vue-widget/index.js',
@@ -98,20 +95,6 @@ module.exports = {
     NODE_ENV: 'production',
     assetsRoot: resolve('./test'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: 'https://aisuda.github.io/amis-widget/test/', // 设置静态资源的引用路径（根域名+路径）
-    assetsSubDirectory: '', // 资源引用二级路径
-    productionSourceMap: false,
-    productionGzip: false,
-    productionGzipExtensions: ['js', 'css', 'json'],
-    bundleAnalyzerReport: false,
-  },
-  build: {
-    entry: { // webpack构建入口
-      editor: './demo/editor/EditorDemo.jsx',
-    },
-    // 用于构建生产环境代码的相关配置信息
-    NODE_ENV: 'production',
-    assetsRoot: resolve('./test/editor'), // 打包后的文件绝对路径（物理路径）
-    assetsPublicPath: 'https://aisuda.github.io/amis-widget/test/editor/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
     productionSourceMap: false,
     productionGzip: false,
@@ -135,9 +118,5 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
-  },
-  build2esm: {
-    input: resolve('src/main.ts'),
-    fileName: 'index',
   }
 };
