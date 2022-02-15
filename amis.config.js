@@ -29,7 +29,8 @@ module.exports = {
     externals: [],
     projectDir: ['src', 'demo', 'demo2', 'editor'],
     template: resolve('./editor/index.html'), // 使用自己的html模板
-    cssLoaderUrl: true
+    cssLoaderUrl: true,
+    cssLoaderUrlDir: resolve('./editor')
   },
   dev: {
     entry: { // 调试模式的入口1
