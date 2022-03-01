@@ -1,6 +1,6 @@
 {
   "name": "amis-widget",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "开发amis自定义组件的工具集（支持react、vue2.0和jQuery技术栈）",
   "keywords": [
     "amis自定义组件",
@@ -37,7 +37,7 @@
     "url": "https://github.com/aisuda/amis-widget/issues"
   },
   "dependencies": {
-    "amis": "^1.6.3",
+    "amis": "1.6.5-beta.3",
     "amis-editor": "^4.0.1-beta.28",
     "axios": "^0.24.0",
     "jquery": "^3.5.1",
