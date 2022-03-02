@@ -1,9 +1,0 @@
-/*!
- * amis-widget v1.2.9
- * author: fex
- * build tool: AKFun
- * build time: Wed Feb 16 2022 19:31:08 GMT+0800 (China Standard Time)
- * build tool info: https://github.com/wibetter/akfun
- */
-
-/*! For license information please see index.umd.js.LICENSE.txt */
