@@ -16,7 +16,7 @@ module.exports = {
   webpack: {
     resolve: {
       // webpack的resolve配置
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.min.js', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.esm.js', '.umd.js', '.min.js', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
         $function: resolve('src/function'),
@@ -32,8 +32,8 @@ module.exports = {
     cssLoaderUrl: true,
     cssLoaderUrlDir: resolve('./editor')
   },
-  dev1: {
-    entry: { // 调试模式的入口1
+  dev: {
+    entry: { // 调试模式的入口1（使用构建后的amis-widget）
       index: [
         './demo/react-widget/index.js',
         './demo/react-widget/plugin/info-card-plugin.jsx',
@@ -56,8 +56,8 @@ module.exports = {
     closeHotReload: false, // 是否关闭热更新
     closeEditorClient: false, // 是否关闭自动注入editor
   },
-  dev: {
-    entry: { // 本地调试模式的入口2
+  dev2: {
+    entry: { // 本地调试模式的入口2（使用本地的amis-widget）
       index: [
         './demo2/react-widget/index.js',
         './demo2/react-widget/plugin/info-card-plugin.jsx',
