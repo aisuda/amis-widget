@@ -28,11 +28,11 @@ module.exports = {
     allowList: [], // ignoreNodeModules为true时生效
     externals: [],
     projectDir: ['src', 'demo', 'demo2', 'editor'],
-    template: resolve('./editor/index.html'), // 使用自己的html模板
+    // template: resolve('./editor/index.html'), // 使用自己的html模板
     cssLoaderUrl: true,
     cssLoaderUrlDir: resolve('./editor')
   },
-  dev: {
+  dev1: {
     entry: { // 调试模式的入口1
       index: [
         './demo/react-widget/index.js',
@@ -56,7 +56,7 @@ module.exports = {
     closeHotReload: false, // 是否关闭热更新
     closeEditorClient: false, // 是否关闭自动注入editor
   },
-  dev2: {
+  dev: {
     entry: { // 本地调试模式的入口2
       index: [
         './demo2/react-widget/index.js',
@@ -119,5 +119,9 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
+  },
+  build2esm: {
+    input: resolve('src/main.ts'),
+    fileName: 'index',
   }
 };

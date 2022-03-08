@@ -1,10 +1,7 @@
 // import {registerFormItem, registerOptionsControl, registerRenderer} from 'amis';
 import { Renderer, FormItem, OptionsControl } from 'amis';
-// @ts-ignore
 import { createJQComponent } from '../frameworkFactory/jqFactory';
-// @ts-ignore
 import { createVue2Component } from '../frameworkFactory/vueFactory';
-// @ts-ignore
 // import {createVue3Component} from '../frameworkFactory/vue3Factory';
 import {
   getFramework,

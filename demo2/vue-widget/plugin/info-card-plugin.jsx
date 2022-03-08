@@ -1,8 +1,6 @@
 /**
  * @file 编辑器扩展, 增加自定义组件
  */
-// @ts-ignore
-// import { registerAmisEditorPlugin } from '../../../dist/index.umd';
 import { registerAmisEditorPlugin } from '../../../src/main';
 
 export class InfoCardPlugin {

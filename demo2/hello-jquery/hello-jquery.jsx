@@ -1,6 +1,4 @@
 import $ from 'jquery';
-// @ts-ignore
-// import { registerRendererByType } from '../../dist/index.umd';
 import { registerRendererByType } from '../../src/main';
 
 class MyJQueryBtn {

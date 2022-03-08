@@ -5,16 +5,16 @@ import React from 'react';
 import Vue from 'vue';
 import { utils } from 'amis';
 
-export function createVue2Component(vueObj) {
+export function createVue2Component(vueObj: any) {
   if (!vueObj || (typeof vueObj !== 'function' && typeof vueObj !== 'object')) {
     return;
   }
 
   class VueFactory extends React.Component {
-    domRef;
-    vm;
+    domRef: any;
+    vm: any;
 
-    constructor(props) {
+    constructor(props: any) {
       super(props);
       this.domRef = React.createRef();
       this.resolveAmisProps = this.resolveAmisProps.bind(this);
@@ -39,7 +39,8 @@ export function createVue2Component(vueObj) {
         const func = amisFunc[key];
         this.vm.$on(
           key,
-          (value) => func && func(...(Array.isArray(value) ? value : [value])),
+          (value: any) =>
+            func && func(...(Array.isArray(value) ? value : [value])),
         );
       });
 

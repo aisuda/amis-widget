@@ -4,7 +4,7 @@
 import React from 'react';
 import 'jquery';
 
-export function createJQComponent(jqueryObj) {
+export function createJQComponent(jqueryObj: any) {
   if (
     !jqueryObj ||
     (typeof jqueryObj !== 'function' && typeof jqueryObj !== 'object')
@@ -13,10 +13,10 @@ export function createJQComponent(jqueryObj) {
   }
 
   class JQFactory extends React.Component {
-    dom;
+    dom: any;
     instance;
 
-    constructor(props) {
+    constructor(props: any) {
       super(props);
       this.domRef = this.domRef.bind(this);
       this.instance =
@@ -28,7 +28,7 @@ export function createJQComponent(jqueryObj) {
       onMount && onMount.apply(this.instance, [this.props]);
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps: any) {
       const { onUpdate } = this.instance;
       onUpdate && onUpdate.apply(this.instance, [this.props, prevProps]);
     }
@@ -38,7 +38,7 @@ export function createJQComponent(jqueryObj) {
       onUnmout && onUnmout.apply(this.instance, this.props);
     }
 
-    domRef(dom) {
+    domRef(dom: any) {
       this.instance.$root = this.dom = dom;
       this._render();
     }
