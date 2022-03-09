@@ -123,5 +123,15 @@ module.exports = {
   build2esm: {
     input: resolve('src/main.ts'),
     fileName: 'index',
+    // 不将以下依赖打包到输出文件中
+    excludeList: [
+      'amis',
+      'amis-editor',
+      'axios',
+      'jquery',
+      'react',
+      'react-dom',
+      'vue',
+    ],
   }
 };

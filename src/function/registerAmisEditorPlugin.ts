@@ -1,4 +1,4 @@
-import { registerEditorPlugin, BasePlugin, getSchemaTpl } from 'amis-editor'; // getEditorPlugins
+import { registerEditorPlugin, BasePlugin, getSchemaTpl } from 'amis-editor';
 import { isEditorPlugin, consoleTag } from '../utils';
 /**
  * 自定义editor插件配置项
