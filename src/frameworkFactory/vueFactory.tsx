@@ -52,8 +52,8 @@ export function createVue2Component(vueObj: any) {
     }
 
     resolveAmisProps() {
-      let amisFunc = {},
-        amisData = {};
+      let amisFunc = {};
+      let amisData = {};
 
       Object.keys(this.props).forEach((key) => {
         const value = this.props[key];
