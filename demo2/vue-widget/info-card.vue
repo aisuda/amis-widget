@@ -1,5 +1,5 @@
 <template>
-  <div class="news-card" :key="uuid">
+  <div class="news-card">
     <div class="news-title">{{ title }}</div>
     <div class="item-imgbox">
       <div
@@ -16,12 +16,12 @@
         {{ agreeDataFormat(comment_count) }}评
       </div>
     </div>
+    <div class="widget-container" id="ReactChildBody">
+    </div>
   </div>
 </template>
 <script>
-/**
- * 视频模板页
- */
+
 export default {
   props: {
     title: {
@@ -42,6 +42,7 @@ export default {
       type: Number,
       default: 2021,
     },
+    renderChild: Function,
   },
   data() {
     return {
@@ -51,6 +52,11 @@ export default {
   },
   mounted() {
     this.isFirstVisit = false;
+  },
+  updated() {
+    if (this.renderChild && this.body) {
+      this.renderChild('body', this.body, 'ReactChildBody');
+    }
   },
   activated() {
     this.isAlive = true;
