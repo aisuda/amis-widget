@@ -32,7 +32,7 @@ module.exports = {
     cssLoaderUrl: true,
     cssLoaderUrlDir: resolve('./editor')
   },
-  dev: {
+  dev1: {
     entry: { // 调试模式的入口1（使用构建后的amis-widget）
       index: [
         './demo/react-widget/index.js',
@@ -56,7 +56,7 @@ module.exports = {
     closeHotReload: false, // 是否关闭热更新
     closeEditorClient: false, // 是否关闭自动注入editor
   },
-  dev2: {
+  dev: {
     entry: { // 本地调试模式的入口2（使用本地的amis-widget）
       index: [
         './demo2/react-widget/index.js',

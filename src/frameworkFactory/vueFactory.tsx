@@ -2,6 +2,7 @@
  * @file 自定义组件所需的 vue2.0 对接
  */
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Vue from 'vue';
 import { utils } from 'amis';
 
@@ -18,6 +19,7 @@ export function createVue2Component(vueObj: any) {
       super(props);
       this.domRef = React.createRef();
       this.resolveAmisProps = this.resolveAmisProps.bind(this);
+      this.renderChild = this.renderChild.bind(this);
     }
 
     componentDidMount() {
@@ -36,15 +38,46 @@ export function createVue2Component(vueObj: any) {
       });
 
       Object.keys(amisFunc).forEach((key) => {
-        const func = amisFunc[key];
-        this.vm.$on(
-          key,
-          (value: any) =>
-            func && func(...(Array.isArray(value) ? value : [value])),
-        );
+        this.vm.$props[key] = amisFunc[key];
+        if (key === 'render') {
+          // 避免和vue中的render冲突
+          this.vm.$props['renderChild'] = (
+            schemaPosition: string,
+            childSchema: any,
+            insertElemId: string,
+          ) => {
+            this.renderChild(schemaPosition, childSchema, insertElemId);
+          };
+        }
       });
 
       this.domRef.current.appendChild(this.vm.$mount().$el);
+    }
+
+    // 渲染子元素
+    renderChild(
+      schemaPosition: string,
+      childSchema: any,
+      insertElemId: string,
+    ) {
+      let childElemCont = null;
+      if (this.props['render'] && childSchema && insertElemId) {
+        const childElem = this.props['render'](schemaPosition, childSchema);
+        childElemCont = ReactDOM.render(
+          childElem,
+          document.getElementById(insertElemId),
+        );
+      }
+      return childElemCont;
+    }
+
+    componentDidUpdate() {
+      Object.keys(this.props).forEach(
+        (key) =>
+          typeof this.props[key] !== 'function' &&
+          (this.vm[key] = this.props[key]),
+      );
+      this.vm.$forceUpdate();
     }
 
     componentWillUnmount() {
@@ -52,8 +85,8 @@ export function createVue2Component(vueObj: any) {
     }
 
     resolveAmisProps() {
-      let amisFunc = {};
-      let amisData = {};
+      let amisFunc: any = {};
+      let amisData: any = {};
 
       Object.keys(this.props).forEach((key) => {
         const value = this.props[key];
@@ -64,14 +97,6 @@ export function createVue2Component(vueObj: any) {
         }
       });
       return { amisData, amisFunc };
-    }
-
-    componentDidUpdate() {
-      Object.keys(this.props).forEach(
-        (key) =>
-          typeof this.props[key] !== 'function' &&
-          (this.vm[key] = this.props[key]),
-      );
     }
 
     render() {

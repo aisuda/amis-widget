@@ -15,7 +15,7 @@ export default class InfoCard extends React.PureComponent {
     }
   }
   render() {
-    const { title, backgroundImage, img_count, comment_count } = this.props;
+    const { title, backgroundImage, img_count, comment_count, render, body } = this.props;
     const curBackgroundImage =
       backgroundImage ||
       'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
@@ -40,6 +40,7 @@ export default class InfoCard extends React.PureComponent {
             </div>
           )}
         </div>
+        {body ? render('body', body) : null}
       </div>
     );
   }
