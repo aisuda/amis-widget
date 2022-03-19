@@ -81,7 +81,7 @@ export function createVue2Component(vueObj: any) {
     }
 
     componentWillUnmount() {
-      // this.vm.$destroy();
+      this.vm.$destroy();
     }
 
     resolveAmisProps() {
