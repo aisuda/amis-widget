@@ -85,12 +85,12 @@ module.exports = {
     entry: { // webpack构建入口
       preview: [
         './editor/EditorDemo.jsx',
-        './demo/react-widget/index.js',
-        './demo/react-widget/plugin/info-card-plugin.jsx',
-        './demo/vue-widget/index.js',
-        './demo/vue-widget/plugin/info-card-plugin.jsx',
-        './demo/hello-jquery/hello-jquery.jsx',
-        './demo/hello-jquery/plugin/hello-jquery-plugin.jsx',
+        './demo2/react-widget/index.js',
+        './demo2/react-widget/plugin/info-card-plugin.jsx',
+        './demo2/vue-widget/index.js',
+        './demo2/vue-widget/plugin/info-card-plugin.jsx',
+        './demo2/hello-jquery/hello-jquery.jsx',
+        './demo2/hello-jquery/plugin/hello-jquery-plugin.jsx',
       ],
     },
     // 用于构建生产环境代码的相关配置信息
