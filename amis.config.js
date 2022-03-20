@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 // 统一路径解析
 function resolve(dir) {
   return path.resolve(__dirname, dir);
@@ -30,7 +31,7 @@ module.exports = {
     projectDir: ['src', 'demo', 'demo2', 'editor'],
     // template: resolve('./editor/index.html'), // 使用自己的html模板
     cssLoaderUrl: true,
-    cssLoaderUrlDir: resolve('./editor')
+    cssLoaderUrlDir: 'editor/fontawesome-free'
   },
   dev1: {
     entry: { // 调试模式的入口1（使用构建后的amis-widget）
@@ -100,6 +101,7 @@ module.exports = {
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
+    plugins: [new MonacoWebpackPlugin()],
     bundleAnalyzerReport: false,
   },
   build2lib: {
