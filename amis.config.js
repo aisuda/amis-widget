@@ -101,7 +101,7 @@ module.exports = {
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    plugins: [new MonacoWebpackPlugin()],
+    // plugins: [new MonacoWebpackPlugin()],
     bundleAnalyzerReport: false,
   },
   build2lib: {
