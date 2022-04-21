@@ -24,9 +24,6 @@ sed -i '' -e "s/\'amis\'/\'@fex\/amis\'/g" ./amis.config.js
 
 for f in $(find ./dist -name "*.js"); do
   sed -i '' -e "s/from \'amis/from \'@fex\/amis/g" $f
-done
-
-for f in $(find ./dist -name "*.js"); do
   sed -i '' -e "s/from \'amis-editor/from \'@fex\/amis-editor/g" $f
 done
 
