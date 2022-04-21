@@ -16,7 +16,8 @@
     "build": "amis build",
     "build2lib": "amis build2lib",
     "build2esm": "amis build2esm",
-    "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+    "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\"",
+    "publish2local": "sh publish-local.sh"
   },
   "files": [
     "dist/*"
