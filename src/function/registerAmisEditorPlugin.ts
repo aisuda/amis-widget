@@ -70,24 +70,24 @@ export function registerAmisEditorPlugin(
   _EditorPlugin: any,
   pluginOption?: PluginOption,
 ) {
-  class newEditorPlugin extends BasePlugin {
+  class NewEditorPlugin extends BasePlugin {
     constructor(props: any) {
       super(props);
       // console.info(`${consoleTag}初始化自定义amis-editor插件:`, this);
     }
   }
   // 将用户自定义的插件相关属性设置到新插件对象的prototype中
-  Object.assign(newEditorPlugin.prototype, new _EditorPlugin());
+  Object.assign(NewEditorPlugin.prototype, new _EditorPlugin());
   // 将用户的配置属性设置到新插件对象的prototype中
-  Object.assign(newEditorPlugin.prototype, pluginOption);
-  if (isEditorPlugin(newEditorPlugin)) {
-    Object.assign(newEditorPlugin.prototype, {
+  Object.assign(NewEditorPlugin.prototype, pluginOption);
+  if (isEditorPlugin(NewEditorPlugin)) {
+    Object.assign(NewEditorPlugin.prototype, {
       isNpmCustomWidget: true, // npm自定义插件标识
     });
     // const curEditorPlugins:any = getEditorPlugins();
-    const newEditorPluginPrototype: any = newEditorPlugin.prototype;
+    const newEditorPluginPrototype: any = NewEditorPlugin.prototype;
     // 注册为amis-editor插件
-    registerEditorPlugin(newEditorPlugin);
+    registerEditorPlugin(NewEditorPlugin);
     // 触发sessionStorageChange：告知amis-editor
     if (window && window.postMessage) {
       window.postMessage(
@@ -105,7 +105,7 @@ export function registerAmisEditorPlugin(
       newEditorPluginPrototype,
     );
   }
-  return newEditorPlugin;
+  return NewEditorPlugin;
 }
 
 export { getSchemaTpl };
