@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Editor} from 'amis-editor';
 import 'amis-editor/dist/style.css';
 import {__uri} from 'amis/lib/utils/helper';
+import {Icon} from './icons/index';
 // import styles
 import 'amis/lib/themes/default.css';
 import 'amis/lib/themes/cxd.css';
@@ -31,27 +32,54 @@ const plugins = []; // 通过plugin注入
 
 class SchemaEditorDemo extends React.Component {
   state = {
-    preview: false,
-    mobile: false,
-    schema: schema
+    preview: localStorage.getItem('editting_preview') ? true : false,
+    isMobile: localStorage.getItem('editting_preview_mobile') ? true : false,
+    schema: localStorage.getItem('editting_schema')
+      ? JSON.parse(localStorage.getItem('editting_schema'))
+      : schema
   };
   handleChange = value => {
+    localStorage.setItem('editting_schema', JSON.stringify(value));
+
     this.setState({
       schema: value
     });
   };
+
+  onSave = () => {
+    const curSchema = this.state.schema;
+    localStorage.setItem('editting_schema', JSON.stringify(curSchema));
+  };
+
+  handlePreviewChange = preview => {
+    localStorage.setItem('editting_preview', preview ? 'true' : '');
+
+    this.setState({
+      preview: !!preview
+    });
+  };
+
   togglePreview = () => {
+    this.handlePreviewChange(!this.state.preview);
+  };
+
+  handleMobileChange = isMobile => {
+    localStorage.setItem('editting_preview_mobile', isMobile ? 'true' : '');
+
     this.setState({
-      preview: !this.state.preview
+      isMobile: !!isMobile
     });
   };
-  handleMobile = mobileStatus => {
+
+  clearCache = () => {
+    localStorage.removeItem('editting_schema');
     this.setState({
-      mobile: mobileStatus
+      schema: schema
     });
   };
+
   render() {
-    const {preview, mobile} = this.state;
+    const {preview, isMobile, schema} = this.state;
     return (
       <div className="Editor-Demo">
         <div className="Editor-header">
@@ -60,23 +88,23 @@ class SchemaEditorDemo extends React.Component {
             <div className="Editor-view-mode-group">
               <div
                 className={`Editor-view-mode-btn ${
-                  !mobile ? 'is-active' : ''
+                  !isMobile ? 'is-active' : ''
                 }`}
                 onClick={() => {
-                  this.handleMobile(false);
+                  this.handleMobileChange(false);
                 }}
               >
-                PC
+                <Icon icon="pc-preview" title="PC模式" />
               </div>
               <div
                 className={`Editor-view-mode-btn ${
-                  mobile ? 'is-active' : ''
+                  isMobile ? 'is-active' : ''
                 }`}
                 onClick={() => {
-                  this.handleMobile(true);
+                  this.handleMobileChange(true);
                 }}
               >
-                移动
+                <Icon icon="h5-preview" title="移动模式" />
               </div>
             </div>
           </div>
@@ -96,17 +124,18 @@ class SchemaEditorDemo extends React.Component {
         </div>
         <div className="Editor-inner">
           <Editor
-            isMobile={mobile}
             preview={preview}
-            value={this.state.schema}
+            isMobile={isMobile}
+            value={schema}
             onChange={this.handleChange}
+            onPreview={this.handlePreviewChange}
+            onSave={this.onSave}
+            className="is-fixed"
             theme="cxd"
-            showCustomRenderersPanel={true} // 是否显示自定义组件面板
-            $schemaUrl={`${
-              // @ts-ignore
-              __uri('amis/schema.json')
-            }`}
+            showCustomRenderersPanel={true}
             plugins={plugins}
+            // iframeUrl={'/examples/editor.html'}
+            $schemaUrl={`${location.protocol}//${location.host}/schema.json`}
           />
         </div>
       </div>

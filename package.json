@@ -1,6 +1,6 @@
 {
   "name": "amis-widget",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "amis组件注册器（支持react、vue2.0和jQuery技术栈），用于注册amis渲染器、Editor插件",
   "keywords": [
     "amis组件注册器",

@@ -6,7 +6,7 @@ import 'jquery';
 import ReactDOM from 'react-dom';
 import Vue from 'vue';
 
-const npmCustomWidgetTag = 'npm-custom'; // npm自定义组件前缀
+const npmCustomWidgetTag = ''; // npm自定义组件前缀 npm-custom
 const consoleTag = '[amis-widget]'; // 输出标记
 /**
  * 获取技术栈标识
@@ -196,24 +196,24 @@ function isString(str) {
  * }
  */
 function registerAmisEditorPlugin(_EditorPlugin, pluginOption) {
-    class newEditorPlugin extends BasePlugin {
+    class NewEditorPlugin extends BasePlugin {
         constructor(props) {
             super(props);
             // console.info(`${consoleTag}初始化自定义amis-editor插件:`, this);
         }
     }
     // 将用户自定义的插件相关属性设置到新插件对象的prototype中
-    Object.assign(newEditorPlugin.prototype, new _EditorPlugin());
+    Object.assign(NewEditorPlugin.prototype, new _EditorPlugin());
     // 将用户的配置属性设置到新插件对象的prototype中
-    Object.assign(newEditorPlugin.prototype, pluginOption);
-    if (isEditorPlugin(newEditorPlugin)) {
-        Object.assign(newEditorPlugin.prototype, {
+    Object.assign(NewEditorPlugin.prototype, pluginOption);
+    if (isEditorPlugin(NewEditorPlugin)) {
+        Object.assign(NewEditorPlugin.prototype, {
             isNpmCustomWidget: true, // npm自定义插件标识
         });
         // const curEditorPlugins:any = getEditorPlugins();
-        const newEditorPluginPrototype = newEditorPlugin.prototype;
+        const newEditorPluginPrototype = NewEditorPlugin.prototype;
         // 注册为amis-editor插件
-        registerEditorPlugin(newEditorPlugin);
+        registerEditorPlugin(NewEditorPlugin);
         // 触发sessionStorageChange：告知amis-editor
         if (window && window.postMessage) {
             window.postMessage({
@@ -225,7 +225,7 @@ function registerAmisEditorPlugin(_EditorPlugin, pluginOption) {
         }
         console.info(`${consoleTag}注册了一个自定义amis-editor插件:`, newEditorPluginPrototype);
     }
-    return newEditorPlugin;
+    return NewEditorPlugin;
 }
 
 /**
