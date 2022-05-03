@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "amis": "^1.9.0",
-    "amis-editor": "^4.1.0-beta.19",
+    "amis-editor": "^4.1.0-beta.20",
     "axios": "^0.24.0",
     "jquery": "^3.5.1",
     "react": "^16.14.0",
@@ -57,7 +57,8 @@
     "amis-widget-cli": "^1.5.11",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "monaco-editor-webpack-plugin": "6.0.0"
   },
   "engines": {
     "node": ">= 10.13.0",

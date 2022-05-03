@@ -37,7 +37,7 @@ module.exports = {
   dev: {
     entry: { // 调试模式的入口1（使用构建后的amis-widget）
       index: [
-        // './editor/EditorDemo.jsx',
+        './editor/EditorDemo.jsx',
         './demo/react-widget/index.js',
         './demo/react-widget/plugin/info-card-plugin.jsx',
         './demo/vue-widget/index.js',
@@ -49,7 +49,6 @@ module.exports = {
     // 用于开启本地调试模式的相关配置信息
     NODE_ENV: 'development',
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
-    // allowList: ['react', 'react-dow', /^@babel\/runtime\/helpers/, 'jquery', 'vue', 'amis', 'object-assign'],
     port: 80,
     autoOpenBrowser: true,
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
@@ -57,12 +56,12 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: false,
     closeHotReload: false, // 是否关闭热更新
-    closeEditorClient: false, // 是否关闭自动注入editor
+    closeEditorClient: true, // 是否关闭自动注入editor
   },
   dev2: {
     entry: { // 本地调试模式的入口2（使用本地的amis-widget）
       index: [
-        // './editor/EditorDemo.jsx',
+        './editor/EditorDemo.jsx',
         './demo2/react-widget/index.js',
         './demo2/react-widget/plugin/info-card-plugin.jsx',
         './demo2/vue-widget/index.js',
@@ -74,7 +73,6 @@ module.exports = {
     // 用于开启本地调试模式的相关配置信息
     NODE_ENV: 'development',
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
-    // allowList: ['react', 'react-dow', /^@babel\/runtime\/helpers/, 'jquery', 'vue', 'amis', 'object-assign'],
     port: 80,
     autoOpenBrowser: true,
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
@@ -104,7 +102,7 @@ module.exports = {
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    // plugins: [new MonacoWebpackPlugin()],
+    plugins: [new MonacoWebpackPlugin()],
     bundleAnalyzerReport: false,
   },
   build2lib: {
