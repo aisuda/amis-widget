@@ -32,7 +32,8 @@ module.exports = {
     template: resolve('./editor/index.html'), // 使用自己的html模板
     cssLoaderUrl: true,
     cssLoaderUrlDir: 'editor/fontawesome-free',
-    moduleRules: [] // 用于配置自定义loader
+    moduleRules: [], // 用于配置自定义loaders
+    plugins: [] // 用于配置自定义plugins
   },
   dev: {
     entry: { // 调试模式的入口1（使用构建后的amis-widget）
