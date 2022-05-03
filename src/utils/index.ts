@@ -1,4 +1,4 @@
-export const npmCustomWidgetTag = 'npm-custom'; // npm自定义组件前缀
+export const npmCustomWidgetTag = ''; // npm自定义组件前缀 npm-custom
 export const consoleTag = '[amis-widget]'; // 输出标记
 
 /**
