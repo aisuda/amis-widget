@@ -42,6 +42,7 @@ done
 
 npm i
 amis build2lib
+amis build2esm
 
 npm publish --registry=http://registry.npm.baidu-int.com
 
