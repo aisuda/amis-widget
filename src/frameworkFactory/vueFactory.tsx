@@ -35,8 +35,8 @@ export function createVue2Component(vueObj: any) {
           typeof data === 'function' ? data() : data,
         ),
         ...rest,
+        props: rest.props || {},
       });
-
       Object.keys(amisFunc).forEach((key) => {
         this.vm.$props[key] = amisFunc[key];
         if (key === 'render') {
