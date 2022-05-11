@@ -304,6 +304,7 @@ function createVue2Component(vueObj) {
             this.vm = new Vue({
                 data: utils.extendObject(amisData, typeof data === 'function' ? data() : data),
                 ...rest,
+                props: rest.props || {},
             });
             Object.keys(amisFunc).forEach((key) => {
                 this.vm.$props[key] = amisFunc[key];
