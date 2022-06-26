@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import {Editor} from 'amis-editor';
+import {Editor, ShortcutKey} from 'amis-editor';
 import 'amis-editor/dist/style.css';
 import {__uri} from 'amis-core';
 import {Icon} from './icons/index';
@@ -110,6 +110,7 @@ class SchemaEditorDemo extends React.Component {
           </div>
 
           <div className="Editor-header-actions">
+            <ShortcutKey />
             <div
               className={`header-action-btn margin-left-space ${
                 preview ? 'primary' : ''
