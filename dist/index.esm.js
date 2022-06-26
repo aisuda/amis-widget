@@ -1,6 +1,6 @@
 import { registerEditorPlugin, BasePlugin } from 'amis-editor';
 export { getSchemaTpl } from 'amis-editor';
-import { utils, Renderer, FormItem, OptionsControl } from 'amis';
+import { utils, Renderer, FormItem, OptionsControl } from 'amis-core';
 import React from 'react';
 import 'jquery';
 import ReactDOM from 'react-dom';
@@ -355,7 +355,7 @@ function createVue2Component(vueObj) {
     return VueFactory;
 }
 
-// import {registerFormItem, registerOptionsControl, registerRenderer} from 'amis';
+// import {registerFormItem, registerOptionsControl, registerRenderer} from 'amis-core';
 /**
  * registerRendererByType: 根据type类型注册amis普通渲染器、amis表单渲染器、amis表单控件渲染器
  *【方法参数说明】

@@ -35,7 +35,7 @@ module.exports = {
     moduleRules: [], // 用于配置自定义loaders
     plugins: [] // 用于配置自定义plugins
   },
-  dev1: {
+  dev: {
     entry: { // 调试模式的入口1（使用构建后的amis-widget）
       index: [
         './editor/EditorDemo.jsx',
@@ -59,7 +59,7 @@ module.exports = {
     closeHotReload: false, // 是否关闭热更新
     closeEditorClient: true, // 是否关闭自动注入editor
   },
-  dev: {
+  dev2: {
     entry: { // 本地调试模式的入口2（使用本地的amis-widget）
       index: [
         './editor/EditorDemo.jsx',
@@ -151,6 +151,8 @@ module.exports = {
     // 不将以下依赖打包到输出文件中
     excludeList: [
       'amis',
+      'amis-core',
+      'amis-ui',
       'amis-editor',
       'axios',
       'jquery',
