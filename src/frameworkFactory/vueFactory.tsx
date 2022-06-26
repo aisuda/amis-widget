@@ -4,7 +4,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Vue from 'vue';
-import { utils } from 'amis';
+import { utils } from 'amis-core';
 
 export function createVue2Component(vueObj: any) {
   if (!vueObj || (typeof vueObj !== 'function' && typeof vueObj !== 'object')) {

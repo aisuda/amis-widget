@@ -1,5 +1,5 @@
-// import {registerFormItem, registerOptionsControl, registerRenderer} from 'amis';
-import { Renderer, FormItem, OptionsControl } from 'amis';
+// import {registerFormItem, registerOptionsControl, registerRenderer} from 'amis-core';
+import { Renderer, FormItem, OptionsControl } from 'amis-core';
 import { createJQComponent } from '../frameworkFactory/jqFactory';
 import { createVue2Component } from '../frameworkFactory/vueFactory';
 // import {createVue3Component} from '../frameworkFactory/vue3Factory';

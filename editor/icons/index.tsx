@@ -2,7 +2,7 @@
  * @file 内置 svg 图标
  */
 
-import {Icon, registerIcon} from 'amis';
+import {Icon, registerIcon} from 'amis-ui';
 
 // @ts-ignore
 import PCPreview from './pc-preview.svg';

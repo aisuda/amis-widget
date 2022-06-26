@@ -29,7 +29,7 @@ module.exports = {
     allowList: [], // ignoreNodeModules为true时生效
     externals: [],
     projectDir: ['src', 'demo', 'demo2', 'editor'],
-    // template: resolve('./editor/index.html'), // 使用自己的html模板
+    template: resolve('./editor/index.html'), // 使用自己的html模板
     cssLoaderUrl: true,
     cssLoaderUrlDir: 'editor/fontawesome-free',
     moduleRules: [], // 用于配置自定义loaders
@@ -62,7 +62,7 @@ module.exports = {
   dev: {
     entry: { // 本地调试模式的入口2（使用本地的amis-widget）
       index: [
-        // './editor/EditorDemo.jsx',
+        './editor/EditorDemo.jsx',
         './demo2/react-widget/index.js',
         './demo2/react-widget/plugin/info-card-plugin.jsx',
         './demo2/vue-widget/index.js',
@@ -80,8 +80,29 @@ module.exports = {
     assetsSubDirectory: '',
     hostname: 'localhost',
     cssSourceMap: false,
+    closeHotReload: false, // 是否关闭热更新
+    closeEditorClient: true, // 是否关闭自动注入editor
+  },
+  linkDebug: {
+    entry: { // 外链调试（爱速搭中预览本地自定义组件）
+      index: [
+        './demo2/react-widget/index.js',
+        './demo2/react-widget/plugin/info-card-plugin.jsx',
+        './demo2/vue-widget/index.js',
+        './demo2/vue-widget/plugin/info-card-plugin.jsx',
+        './demo2/hello-jquery/hello-jquery.jsx',
+        './demo2/hello-jquery/plugin/hello-jquery-plugin.jsx',
+      ],
+    },
+    NODE_ENV: 'production',
+    port: 80,
+    autoOpenBrowser: false,
+    closeHtmlWebpackPlugin: true, // 关闭HtmlWebpackPlugin
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    cssSourceMap: true,
     closeHotReload: true, // 是否关闭热更新
-    closeEditorClient: false, // 是否关闭自动注入editor
   },
   build: {
     entry: { // webpack构建入口
