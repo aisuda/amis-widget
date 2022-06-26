@@ -47,7 +47,6 @@
     "jquery": "^3.5.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-hook-form": "^7.31.1",
     "vue": "^2.6.14"
   },
   "devDependencies": {
