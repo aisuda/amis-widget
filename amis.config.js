@@ -127,6 +127,24 @@ module.exports = {
     plugins: [new MonacoWebpackPlugin()],
     bundleAnalyzerReport: false,
   },
+  buildLayout: {
+    entry: { // webpack构建入口
+      preview: [
+        './editor/EditorDemo.jsx'
+      ],
+    },
+    // 用于构建生产环境代码的相关配置信息
+    NODE_ENV: 'production',
+    assetsRoot: resolve('./layout-demo'), // 打包后的文件绝对路径（物理路径）
+    assetsPublicPath: 'https://aisuda.github.io/amis-widget/layout-demo/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '', // 资源引用二级路径
+    productionSourceMap: false,
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css', 'json'],
+    plugins: [new MonacoWebpackPlugin()],
+    bundleAnalyzerReport: false,
+    closeHotReload: true, // 是否关闭热更新
+  },
   build2lib: {
     entry: {
       // webpack构建入口
