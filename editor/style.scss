@@ -1,6 +1,7 @@
 
-@import '../node_modules/amis-ui/scss/functions.scss';
-@import '../node_modules/amis-ui/scss/variables.scss';
+@import 'amis-ui/scss/functions.scss';
+@import 'amis-ui/scss/variables.scss';
+@import 'amis-ui/scss/helper.scss';
 
 $editor-default-color: #151b26; // 默认的字体色
 $editor-active-color: #2468f2;
@@ -275,4 +276,7 @@ $disabled-bg-color: #f7f7f9; // 禁用背景颜色
 }
 .ae-Breadcrumb .ae-Breadcrumb-content>ul>li>span {
   line-height: 42px !important;
+}
+.ae-BoxModel-inner {
+  height: auto !important;
 }

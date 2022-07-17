@@ -1,7 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import {Editor, ShortcutKey} from 'amis-editor';
-import 'amis-editor/dist/style.css';
 import {__uri} from 'amis-core';
 import {Icon} from './icons/index';
 // import styles
@@ -10,6 +9,8 @@ import '../node_modules/amis-ui/lib/themes/cxd.css';
 import './fontawesome-free/all.min.css';
 import './fontawesome-free/v4-shims.css';
 import './style.scss'; // demo样式文件
+import 'amis-editor/dist/style.css';
+// import 'amis-editor-core/lib/style.css';
 
 const schema = {
   type: 'page',
