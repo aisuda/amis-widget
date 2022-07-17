@@ -33,7 +33,7 @@ module.exports = {
     cssLoaderUrl: true,
     cssLoaderUrlDir: 'editor/fontawesome-free',
     moduleRules: [], // 用于配置自定义loaders
-    plugins: [] // 用于配置自定义plugins
+    plugins: [], // 用于配置自定义plugins
   },
   dev1: {
     entry: { // 调试模式的入口1（使用构建后的amis-widget）
