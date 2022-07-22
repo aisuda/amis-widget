@@ -8,5 +8,6 @@
 export {
   registerAmisEditorPlugin,
   getSchemaTpl,
+  BasePlugin,
 } from './function/registerAmisEditorPlugin';
 export { registerRendererByType } from './function/registerRendererByType';

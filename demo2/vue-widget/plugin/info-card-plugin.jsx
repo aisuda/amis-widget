@@ -1,9 +1,9 @@
 /**
  * @file 编辑器扩展, 增加自定义组件
  */
-import { registerAmisEditorPlugin } from '../../../src/main';
+import { registerAmisEditorPlugin, BasePlugin } from '../../../src/main';
 
-export class InfoCardPlugin {
+export class InfoCardPlugin extends BasePlugin {
   rendererName = 'vue-info-card';
   $schema = '/schemas/UnkownSchema.json';
   name = 'vue-info-card';

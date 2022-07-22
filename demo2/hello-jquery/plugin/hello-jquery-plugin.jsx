@@ -37,8 +37,7 @@ registerAmisEditorPlugin(HelloJqueryPlugin, {
   // tags: ['自定义'],
   order: 98,
   // icon: 'fa fa-file-code-o',
-  panelTitle: '配置面板',
-  disabledRendererPlugin: false
+  panelTitle: '配置面板'
 });
 
 export default HelloJqueryPlugin;

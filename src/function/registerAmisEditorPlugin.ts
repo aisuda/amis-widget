@@ -70,6 +70,11 @@ export function registerAmisEditorPlugin(
   _EditorPlugin: any,
   pluginOption?: PluginOption,
 ) {
+  if (_EditorPlugin && _EditorPlugin.prototype instanceof BasePlugin) {
+    // 如果当前plugin已经继承了BasePlugin，则直接注册自定义插件
+    registerPluginAction(_EditorPlugin);
+    return _EditorPlugin;
+  }
   class NewEditorPlugin extends BasePlugin {
     constructor(props: any) {
       super(props);
@@ -78,14 +83,22 @@ export function registerAmisEditorPlugin(
   }
   // 将用户自定义的插件相关属性设置到新插件对象的prototype中
   Object.assign(NewEditorPlugin.prototype, new _EditorPlugin());
-  // 将用户的配置属性设置到新插件对象的prototype中
-  Object.assign(NewEditorPlugin.prototype, pluginOption);
-  if (isEditorPlugin(NewEditorPlugin)) {
+  if (pluginOption) {
+    // 将用户的配置属性设置到新插件对象的prototype中
+    Object.assign(NewEditorPlugin.prototype, pluginOption);
+  }
+  registerPluginAction(NewEditorPlugin, pluginOption?.name);
+  return NewEditorPlugin;
+}
+
+function registerPluginAction(NewEditorPlugin: any, pluginName?: string) {
+  if (NewEditorPlugin && isEditorPlugin(NewEditorPlugin)) {
+    // const curEditorPlugins:any = getEditorPlugins();
+    const curEditorPluginName: any = pluginName || new NewEditorPlugin().name;
     Object.assign(NewEditorPlugin.prototype, {
       isNpmCustomWidget: true, // npm自定义插件标识
+      name: curEditorPluginName,
     });
-    // const curEditorPlugins:any = getEditorPlugins();
-    const newEditorPluginPrototype: any = NewEditorPlugin.prototype;
     // 注册为amis-editor插件
     registerEditorPlugin(NewEditorPlugin);
     // 触发sessionStorageChange：告知amis-editor
@@ -95,17 +108,12 @@ export function registerAmisEditorPlugin(
           type: 'amis-widget-register-event',
           eventMsg: `${consoleTag}注册一个自定义amis-editor插件`,
           // editorPluginIndex: curEditorPlugins.length,
-          editorPluginName: newEditorPluginPrototype.name,
+          editorPluginName: curEditorPluginName,
         },
         '*',
       );
     }
-    console.info(
-      `${consoleTag}注册了一个自定义amis-editor插件:`,
-      newEditorPluginPrototype,
-    );
   }
-  return NewEditorPlugin;
 }
 
-export { getSchemaTpl };
+export { getSchemaTpl, BasePlugin };
