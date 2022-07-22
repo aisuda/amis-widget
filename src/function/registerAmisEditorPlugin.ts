@@ -72,7 +72,7 @@ export function registerAmisEditorPlugin(
 ) {
   if (_EditorPlugin && _EditorPlugin.prototype instanceof BasePlugin) {
     // 如果当前plugin已经继承了BasePlugin，则直接注册自定义插件
-    registerPluginAction(_EditorPlugin);
+    registerPluginAction(_EditorPlugin, pluginOption?.name);
     return _EditorPlugin;
   }
   class NewEditorPlugin extends BasePlugin {

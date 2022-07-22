@@ -198,7 +198,7 @@ function isString(str) {
 function registerAmisEditorPlugin(_EditorPlugin, pluginOption) {
     if (_EditorPlugin && _EditorPlugin.prototype instanceof BasePlugin) {
         // 如果当前plugin已经继承了BasePlugin，则直接注册自定义插件
-        registerPluginAction(_EditorPlugin);
+        registerPluginAction(_EditorPlugin, pluginOption?.name);
         return _EditorPlugin;
     }
     class NewEditorPlugin extends BasePlugin {
@@ -222,7 +222,7 @@ function registerPluginAction(NewEditorPlugin, pluginName) {
         const curEditorPluginName = pluginName || new NewEditorPlugin().name;
         Object.assign(NewEditorPlugin.prototype, {
             isNpmCustomWidget: true,
-            name: curEditorPluginName
+            name: curEditorPluginName,
         });
         // 注册为amis-editor插件
         registerEditorPlugin(NewEditorPlugin);
