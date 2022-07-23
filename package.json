@@ -1,6 +1,6 @@
 {
   "name": "amis-widget",
-  "version": "2.0.3",
+  "version": "2.0.5",
   "description": "amis组件注册器（支持react、vue2.0和jQuery技术栈），用于注册amis渲染器、Editor插件",
   "keywords": [
     "amis组件注册器",
@@ -41,8 +41,10 @@
     "url": "https://github.com/aisuda/amis-widget/issues"
   },
   "dependencies": {
-    "amis": "2.0.0-rc.16",
-    "amis-editor": "4.2.0-beta.3",
+    "amis": "^2.0.2",
+    "amis-ui": "^2.0.2",
+    "amis-core": "^2.0.2",
+    "amis-editor": "^5.2.0",
     "axios": "^0.24.0",
     "jquery": "^3.5.1",
     "react": "^16.14.0",

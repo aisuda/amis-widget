@@ -24,7 +24,7 @@ module.exports = {
         $utils: resolve('src/utils'),
       },
     },
-    // createDeclaration: true, // 打包时是否创建ts声明文件
+    createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
     allowList: [], // ignoreNodeModules为true时生效
     externals: [],
