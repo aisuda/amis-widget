@@ -4,11 +4,13 @@
 import { registerAmisEditorPlugin, BasePlugin } from '../../../src/main';
 
 export class InfoCardPlugin extends BasePlugin {
+  // 关联渲染器名字
   rendererName = 'vue-info-card';
   $schema = '/schemas/UnkownSchema.json';
+  // 组件名称（组件面板显示的Title）
   name = 'vue-info-card';
   description = '信息展示卡片';
-  tags = ['展示', '自定义'];
+  tags = ['自定义'];
   icon = 'fa fa-file-code-o';
   scaffold = {
     type: 'vue-info-card',
@@ -68,15 +70,6 @@ export class InfoCardPlugin extends BasePlugin {
   ];
 }
 
-registerAmisEditorPlugin(InfoCardPlugin, {
-  rendererName: 'vue-info-card',
-  name: 'vue-info-card',
-  // description: '信息展示卡片',
-  // tags: ['展示', '自定义'],
-  order: 99,
-  // icon: 'fa fa-file-code-o',
-  // panelTitle: '配置',
-  disabledRendererPlugin: false,
-});
+registerAmisEditorPlugin(InfoCardPlugin);
 
 export default InfoCardPlugin;

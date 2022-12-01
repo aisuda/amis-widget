@@ -4,8 +4,10 @@
 import { registerAmisEditorPlugin } from '../../../dist/index';
 
 export class HelloJqueryPlugin {
+  // 关联渲染器名字
   rendererName = 'hello-jquery';
   $schema = '/schemas/UnkownSchema.json';
+  // 组件名称（组件面板显示的Title）
   name = 'hello-jquery';
   description = 'hello-jquery';
   tags = ['自定义'];
@@ -32,7 +34,6 @@ export class HelloJqueryPlugin {
 
 registerAmisEditorPlugin(HelloJqueryPlugin, {
   rendererName: 'hello-jquery',
-  name: 'hello-jquery',
   // description: '自定义组件描述',
   // tags: ['自定义'],
   order: 98,

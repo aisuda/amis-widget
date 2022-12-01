@@ -3,12 +3,14 @@
  */
  import { registerAmisEditorPlugin, BasePlugin } from '../../../src/main';
 
- export class InfoCardPlugin extends BasePlugin {
+ export class InfoCardPlugin {
+  // 关联渲染器名字
   rendererName = 'react-info-card';
   $schema = '/schemas/UnkownSchema.json';
+  // 组件名称（组件面板显示的Title）
   name = 'react-info-card';
   description = '信息展示卡片';
-  tags = ['展示', '自定义'];
+  tags = ['自定义'];
 
   icon = 'fa fa-file-code-o';
   order = 99;
@@ -72,8 +74,6 @@
   };
 }
 
-registerAmisEditorPlugin(InfoCardPlugin, {
-  name: 'react-info-card'
-});
+registerAmisEditorPlugin(InfoCardPlugin);
 
 export default InfoCardPlugin;

@@ -274,3 +274,7 @@ export function deepClone(target: any): any {
 export function isString(str: any): boolean {
   return Object.prototype.toString.call(str).slice(8, -1) === 'String';
 }
+
+export function isObject(obj: any): boolean {
+  return Object.prototype.toString.call(obj).slice(8, -1) === 'Object';
+}

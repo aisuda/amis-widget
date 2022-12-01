@@ -1,4 +1,5 @@
-import { registerEditorPlugin, BasePlugin, getSchemaTpl } from 'amis-editor';
+// @ts-ignore
+import { BasePlugin, getSchemaTpl } from 'amis-editor-core';
 import { isEditorPlugin, consoleTag } from '../utils';
 /**
  * 自定义editor插件配置项
@@ -9,6 +10,13 @@ export interface PluginOption {
    * 备注：可以关联当前的自定义组件，也可以关联平台预置组件和其他自定义组件
    */
   rendererName?: string;
+
+  /**
+   * 关联的渲染器
+   * 备注：type 和 rendererName 为同一个字段，rendererName 和 type 不能同时存在
+   * 目的：兼容用户的错误写法
+   */
+  type?: string;
 
   /**
    * 自定义组件名称
@@ -51,6 +59,11 @@ export interface PluginOption {
   disabledRendererPlugin?: boolean;
 }
 
+declare const window: Window & {
+  postMessage: any;
+  AMISEditorCustomPlugins: any;
+};
+
 /**
  * registerAmisEditorPlugin: 注册 amis-editor 插件
  *【方法参数说明】
@@ -70,50 +83,73 @@ export function registerAmisEditorPlugin(
   _EditorPlugin: any,
   pluginOption?: PluginOption,
 ) {
+  const rendererName = pluginOption?.rendererName || pluginOption?.type;
+  // 如果当前plugin已经继承了BasePlugin，则直接注册自定义插件
   if (_EditorPlugin && _EditorPlugin.prototype instanceof BasePlugin) {
-    // 如果当前plugin已经继承了BasePlugin，则直接注册自定义插件
-    registerPluginAction(_EditorPlugin, pluginOption?.name);
+    registerPluginAction(_EditorPlugin, rendererName);
     return _EditorPlugin;
   }
+  // 如果自定义插件并未继承BasePlugin，则自动为其进行包裹处理
   class NewEditorPlugin extends BasePlugin {
     constructor(props: any) {
       super(props);
-      // console.info(`${consoleTag}初始化自定义amis-editor插件:`, this);
     }
   }
-  // 将用户自定义的插件相关属性设置到新插件对象的prototype中
+  // 将用户自定义的插件相关属性设置到插件对象中
   Object.assign(NewEditorPlugin.prototype, new _EditorPlugin());
   if (pluginOption) {
-    // 将用户的配置属性设置到新插件对象的prototype中
+    // 将用户的注册时的配置属性添加到插件对象中
     Object.assign(NewEditorPlugin.prototype, pluginOption);
   }
-  registerPluginAction(NewEditorPlugin, pluginOption?.name);
+  registerPluginAction(NewEditorPlugin, rendererName);
   return NewEditorPlugin;
 }
 
-function registerPluginAction(NewEditorPlugin: any, pluginName?: string) {
+function registerPluginAction(NewEditorPlugin: any, rendererName?: string) {
   if (NewEditorPlugin && isEditorPlugin(NewEditorPlugin)) {
-    // const curEditorPlugins:any = getEditorPlugins();
-    const curEditorPluginName: any = pluginName || new NewEditorPlugin().name;
+    const curEditorPluginName: any =
+      rendererName || new NewEditorPlugin().rendererName;
     Object.assign(NewEditorPlugin.prototype, {
       isNpmCustomWidget: true, // npm自定义插件标识
       name: curEditorPluginName,
     });
-    // 注册为amis-editor插件
-    registerEditorPlugin(NewEditorPlugin);
-    // 触发sessionStorageChange：告知amis-editor
+    // registerEditorPlugin(NewEditorPlugin); // 3.0 无需直接注册为amis-editor插件
+    // 通过 postMessage 告知 amis-editor 注册一个新的插件
     if (window && window.postMessage) {
-      window.postMessage(
-        {
-          type: 'amis-widget-register-event',
-          eventMsg: `${consoleTag}注册一个自定义amis-editor插件`,
-          // editorPluginIndex: curEditorPlugins.length,
-          editorPluginName: curEditorPluginName,
-        },
-        '*',
+      const newComponentType = AddCustomEditorPlugin(
+        curEditorPluginName,
+        NewEditorPlugin,
       );
+      if (newComponentType) {
+        console.info(
+          `${consoleTag}触发注册自定义插件(${curEditorPluginName})事件`,
+        );
+        window.postMessage(
+          {
+            type: 'amis-widget-register-event',
+            eventMsg: `${consoleTag}注册一个自定义amis-editor插件`,
+            editorPluginName: curEditorPluginName,
+          },
+          '*',
+        );
+      }
     }
   }
+}
+
+function AddCustomEditorPlugin(componentType: string, plugin: any) {
+  if (window && !window.AMISEditorCustomPlugins) {
+    window.AMISEditorCustomPlugins = {};
+  }
+  if (!window.AMISEditorCustomPlugins[componentType]) {
+    window.AMISEditorCustomPlugins[componentType] = plugin;
+    return componentType;
+  } else {
+    console.error(
+      `${consoleTag}注册自定义插件失败，已存在同名插件(${componentType})。`,
+    );
+  }
+  return null;
 }
 
 export { getSchemaTpl, BasePlugin };

@@ -4,8 +4,10 @@
 import { registerAmisEditorPlugin } from '../../../dist/index';
 
 export class InfoCardPlugin {
+  // 关联渲染器名字
   rendererName = 'react-info-card';
   $schema = '/schemas/UnkownSchema.json';
+  // 组件名称（组件面板显示的Title）
   name = 'react-info-card';
   description = '信息展示卡片';
   tags = ['展示', '自定义'];
@@ -54,7 +56,6 @@ export class InfoCardPlugin {
 
 registerAmisEditorPlugin(InfoCardPlugin, {
   rendererName: 'react-info-card',
-  name: 'react-info-card',
   // description: '信息展示卡片',
   // tags: ['展示'],
   order: 99,

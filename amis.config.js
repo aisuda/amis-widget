@@ -23,6 +23,7 @@ module.exports = {
         $function: resolve('src/function'),
         $utils: resolve('src/utils'),
       },
+      // conditionNames: ['require']
     },
     createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
@@ -30,12 +31,12 @@ module.exports = {
     externals: [],
     projectDir: ['src', 'demo', 'demo2', 'editor'],
     template: resolve('./editor/index.html'), // 使用自己的html模板
-    cssLoaderUrl: true,
-    cssLoaderUrlDir: 'editor/fontawesome-free',
+    // cssLoaderUrl: true,
+    // cssLoaderUrlDir: 'editor/fontawesome-free',
     moduleRules: [], // 用于配置自定义loaders
     plugins: [], // 用于配置自定义plugins
   },
-  dev: {
+  dev1: {
     entry: { // 调试模式的入口1（使用构建后的amis-widget）
       index: [
         './editor/EditorDemo.jsx',
@@ -59,16 +60,16 @@ module.exports = {
     closeHotReload: false, // 是否关闭热更新
     closeEditorClient: true, // 是否关闭自动注入editor
   },
-  dev2: {
+  dev: {
     entry: { // 本地调试模式的入口2（使用本地的amis-widget）
       index: [
         './editor/EditorDemo.jsx',
+        './demo2/hello-jquery/hello-jquery.jsx',
+        './demo2/hello-jquery/plugin/hello-jquery-plugin.jsx',
         './demo2/react-widget/index.js',
         './demo2/react-widget/plugin/info-card-plugin.jsx',
         './demo2/vue-widget/index.js',
         './demo2/vue-widget/plugin/info-card-plugin.jsx',
-        './demo2/hello-jquery/hello-jquery.jsx',
-        './demo2/hello-jquery/plugin/hello-jquery-plugin.jsx',
       ],
     },
     // 用于开启本地调试模式的相关配置信息
@@ -108,12 +109,12 @@ module.exports = {
     entry: { // webpack构建入口
       preview: [
         './editor/EditorDemo.jsx',
-        './demo/react-widget/index.js',
-        './demo/react-widget/plugin/info-card-plugin.jsx',
-        './demo/vue-widget/index.js',
-        './demo/vue-widget/plugin/info-card-plugin.jsx',
-        './demo/hello-jquery/hello-jquery.jsx',
-        './demo/hello-jquery/plugin/hello-jquery-plugin.jsx',
+        './demo2/react-widget/index.js',
+        './demo2/react-widget/plugin/info-card-plugin.jsx',
+        './demo2/vue-widget/index.js',
+        './demo2/vue-widget/plugin/info-card-plugin.jsx',
+        './demo2/hello-jquery/hello-jquery.jsx',
+        './demo2/hello-jquery/plugin/hello-jquery-plugin.jsx',
       ],
     },
     // 用于构建生产环境代码的相关配置信息
@@ -125,25 +126,7 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
     plugins: [new MonacoWebpackPlugin()],
-    bundleAnalyzerReport: false,
-  },
-  buildLayout: {
-    entry: { // webpack构建入口
-      preview: [
-        './editor/EditorDemo.jsx'
-      ],
-    },
-    // 用于构建生产环境代码的相关配置信息
-    NODE_ENV: 'production',
-    assetsRoot: resolve('./layout-demo'), // 打包后的文件绝对路径（物理路径）
-    assetsPublicPath: 'https://aisuda.github.io/amis-widget/layout-demo/', // 设置静态资源的引用路径（根域名+路径）
-    assetsSubDirectory: '', // 资源引用二级路径
-    productionSourceMap: false,
-    productionGzip: false,
-    productionGzipExtensions: ['js', 'css', 'json'],
-    plugins: [new MonacoWebpackPlugin()],
-    bundleAnalyzerReport: false,
-    closeHotReload: true, // 是否关闭热更新
+    bundleAnalyzerReport: true,
   },
   build2lib: {
     entry: {
@@ -171,7 +154,9 @@ module.exports = {
       'amis',
       'amis-core',
       'amis-ui',
+      'amis-formula',
       'amis-editor',
+      'amis-editor-core',
       'axios',
       'jquery',
       'react',

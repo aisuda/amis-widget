@@ -61,7 +61,7 @@ registerRendererByType(MyReactSelect, {
   type: 'react-select',
   usage: 'renderer', // formitem: amis表单渲染器、options: amis表单控件渲染器
   weight: 100,
-  framework: 'react'
+  framework: 'react' // 技术栈类型
 });
 
 export default MyReactSelect;
@@ -78,6 +78,7 @@ class ReactSelectPlugin {
   description = 'react-select';
   tags = ['展示']; // 自定义组件分类
   icon = 'fa fa-file-code-o';
+  order = 100; // 组件面板中的展示优先级，越小越靠前展示
   scaffold = { // 插入到页面时需要
     type: 'react-select',
     label: 'react-select',
@@ -136,16 +137,7 @@ class ReactSelectPlugin {
   ];
 }
 // 注册一个amis-editor插件（仅页面设计器需要，会在自定义组件面板中展示）
-registerAmisEditorPlugin(ReactSelectPlugin, {
-  rendererName: 'react-select',
-  name: 'react-select',
-  // description: '自定义组件描述',
-  tags: ['自定义组件'],
-  order: 100,
-  // icon: 'fa fa-file-code-o',
-  panelTitle: '配置',
-  disabledRendererPlugin: false
-});
+registerAmisEditorPlugin(ReactSelectPlugin);
 
 export default ReactSelectPlugin;
 ```
