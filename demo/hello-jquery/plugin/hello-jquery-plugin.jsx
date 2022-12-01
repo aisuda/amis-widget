@@ -32,14 +32,6 @@ export class HelloJqueryPlugin {
   ];
 }
 
-registerAmisEditorPlugin(HelloJqueryPlugin, {
-  rendererName: 'hello-jquery',
-  // description: '自定义组件描述',
-  // tags: ['自定义'],
-  order: 98,
-  // icon: 'fa fa-file-code-o',
-  panelTitle: '配置面板',
-  disabledRendererPlugin: false
-});
+registerAmisEditorPlugin(HelloJqueryPlugin);
 
 export default HelloJqueryPlugin;

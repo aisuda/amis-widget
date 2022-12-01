@@ -33,8 +33,7 @@ export class HelloJqueryPlugin {
 }
 
 /**
- * 备注：如果 HelloJqueryPlugin 已继承 BasePlugin（amis-editor-core），
- * 则直接使用 registerAmisEditorPlugin(HelloJqueryPlugin) 即可完成注册，无需配置参数。
+ * 备注：amis-widget 3.0 版 支持直接 注册为自定义插件，无需另外传递配置对象
  */
 registerAmisEditorPlugin(HelloJqueryPlugin);
 

@@ -54,14 +54,6 @@ export class InfoCardPlugin {
   ];
 }
 
-registerAmisEditorPlugin(InfoCardPlugin, {
-  rendererName: 'react-info-card',
-  // description: '信息展示卡片',
-  // tags: ['展示'],
-  order: 99,
-  // icon: 'fa fa-file-code-o',
-  // panelTitle: '配置',
-  disabledRendererPlugin: false,
-});
+registerAmisEditorPlugin(InfoCardPlugin);
 
 export default InfoCardPlugin;
