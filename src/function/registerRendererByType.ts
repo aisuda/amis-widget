@@ -8,7 +8,6 @@ import {
   Usage,
   getUsage,
   Framework,
-  addCustomPrefixType,
   isString,
   consoleTag,
 } from '../utils';
@@ -84,8 +83,6 @@ export function registerRendererByType(
       `${consoleTag}自定义组件注册失败，自定义组件类型（type）不能为空。`,
     );
   } else {
-    // 增加NpmCustom前缀
-    curRendererOption.type = addCustomPrefixType(curRendererOption.type);
     // 修正framework数值
     curRendererOption.framework = getFramework(curRendererOption.framework);
     // 修正usage数值

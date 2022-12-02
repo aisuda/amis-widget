@@ -1,4 +1,3 @@
-export const npmCustomWidgetTag = ''; // npm自定义组件前缀 npm-custom
 export const consoleTag = '[amis-widget]'; // 输出标记
 
 /**
@@ -125,124 +124,9 @@ export function isEditorPlugin(EditorPluginClass: any) {
         icon: 'fa fa-file-code-o',
       });
     }
-    // 2.添加自定义组件前缀
-    addNpmCustomPrefixByProto(EditorPluginClass.prototype);
     _isEditorPlugin = true;
   }
   return _isEditorPlugin;
-}
-
-// 给当前自定义组件增加特殊前缀
-export function addNpmCustomPrefixByProto(_editorPluginPrototype: any) {
-  if (!_editorPluginPrototype) {
-    return;
-  }
-  // 关联渲染器字段
-  if (
-    _editorPluginPrototype.rendererName &&
-    _editorPluginPrototype.rendererName.indexOf(npmCustomWidgetTag) < 0
-  ) {
-    _editorPluginPrototype.rendererName = `${npmCustomWidgetTag}-${_editorPluginPrototype.rendererName}`;
-  }
-  // 自定义插件名称
-  /*if (_editorPluginPrototype.name && _editorPluginPrototype.name.indexOf(npmCustomWidgetTag) < 0) {
-    _editorPluginPrototype.name = `${npmCustomWidgetTag}-${_editorPluginPrototype.name}`
-  }*/
-  // 自定义插件预览对象
-  if (
-    _editorPluginPrototype.previewSchema &&
-    _editorPluginPrototype.previewSchema.type &&
-    _editorPluginPrototype.previewSchema.type.indexOf(npmCustomWidgetTag) < 0
-  ) {
-    _editorPluginPrototype.previewSchema.type = `${npmCustomWidgetTag}-${_editorPluginPrototype.previewSchema.type}`;
-  }
-  // 自定义插件脚手架
-  if (
-    _editorPluginPrototype.scaffold &&
-    Array.isArray(_editorPluginPrototype.scaffold)
-  ) {
-    _editorPluginPrototype.scaffold.map((scaffold: any) => {
-      if (scaffold.type.indexOf(npmCustomWidgetTag) < 0) {
-        scaffold.type = `${npmCustomWidgetTag}-${scaffold.type}`;
-      }
-      return scaffold;
-    });
-  } else if (
-    _editorPluginPrototype.scaffold &&
-    _editorPluginPrototype.scaffold.type &&
-    _editorPluginPrototype.scaffold.type.indexOf(npmCustomWidgetTag) < 0
-  ) {
-    _editorPluginPrototype.scaffold.type = `${npmCustomWidgetTag}-${_editorPluginPrototype.scaffold.type}`;
-  }
-
-  return _editorPluginPrototype;
-}
-
-// 给当前自定义组件增加特殊前缀
-export function addNpmCustomPrefixByClass(
-  _editorPluginClass: any,
-  _editorPluginObj_: any,
-) {
-  if (!_editorPluginClass) {
-    return;
-  }
-  let _editorPluginObj = _editorPluginObj_;
-  if (!_editorPluginObj_) {
-    _editorPluginObj = new _editorPluginClass();
-  }
-  // 关联渲染器字段
-  if (
-    _editorPluginObj.rendererName &&
-    _editorPluginObj.rendererName.indexOf(npmCustomWidgetTag) < 0
-  ) {
-    _editorPluginClass.prototype.rendererName = `${npmCustomWidgetTag}-${_editorPluginObj.rendererName}`;
-  }
-  // 自定义插件名称
-  if (
-    _editorPluginObj.name &&
-    _editorPluginObj.name.indexOf(npmCustomWidgetTag) < 0
-  ) {
-    _editorPluginClass.prototype.name = `${npmCustomWidgetTag}-${_editorPluginObj.name}`;
-  }
-  // 自定义插件预览对象
-  if (
-    _editorPluginObj.previewSchema &&
-    _editorPluginObj.previewSchema.type &&
-    _editorPluginObj.previewSchema.type.indexOf(npmCustomWidgetTag) < 0
-  ) {
-    _editorPluginObj.previewSchema.type = `${npmCustomWidgetTag}-${_editorPluginObj.previewSchema.type}`;
-    _editorPluginClass.prototype.previewSchema = _editorPluginObj.previewSchema;
-  }
-  // 自定义插件脚手架
-  if (_editorPluginObj.scaffold && Array.isArray(_editorPluginObj.scaffold)) {
-    _editorPluginObj.scaffold.map((scaffold: any) => {
-      if (scaffold.type.indexOf(npmCustomWidgetTag) < 0) {
-        scaffold.type = `${npmCustomWidgetTag}-${scaffold.type}`;
-      }
-      return scaffold;
-    });
-    _editorPluginClass.prototype.scaffold = _editorPluginObj.scaffold;
-  } else if (
-    _editorPluginObj.scaffold &&
-    _editorPluginObj.scaffold.type &&
-    _editorPluginObj.scaffold.type.indexOf(npmCustomWidgetTag) < 0
-  ) {
-    _editorPluginObj.scaffold.type = `${npmCustomWidgetTag}-${_editorPluginObj.scaffold.type}`;
-    _editorPluginClass.prototype.scaffold = _editorPluginObj.scaffold;
-  }
-}
-
-// 给当前自定义组件增加特殊前缀（custom-）
-export function addCustomPrefixType(_type: string) {
-  let curType = _type;
-  if (!_type) {
-    return curType;
-  }
-  if (_type && _type.indexOf(npmCustomWidgetTag) < 0) {
-    curType = `${npmCustomWidgetTag}-${_type}`;
-  }
-
-  return curType;
 }
 
 // 深拷贝函数

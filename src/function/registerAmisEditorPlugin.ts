@@ -1,3 +1,5 @@
+// @ts-ignore
+import { BasePlugin, getSchemaTpl } from 'amis-editor-core';
 import { isEditorPlugin, consoleTag } from '../utils';
 /**
  * 自定义editor插件配置项
@@ -66,7 +68,7 @@ declare const window: Window & {
  * registerAmisEditorPlugin: 注册 amis-editor 插件
  *【方法参数说明】
  * _editorPlugin: 新的自定义插件,
- * pluginOption: {
+ * pluginOption?: {
  *   rendererName?: 关联的渲染器
  *   name?: 自定义组件名称
  *   description?: 自定义组件描述
@@ -149,3 +151,5 @@ function AddCustomEditorPlugin(componentType: string, plugin: any) {
   }
   return null;
 }
+
+export { getSchemaTpl, BasePlugin };
