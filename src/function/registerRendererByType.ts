@@ -1,5 +1,4 @@
-// import {registerFormItem, registerOptionsControl, registerRenderer} from 'amis-core';
-import { Renderer, FormItem, OptionsControl } from 'amis-core';
+// import { Renderer, FormItem, OptionsControl } from 'amis-core';
 import { createJQComponent } from '../frameworkFactory/jqFactory';
 import { createVue2Component } from '../frameworkFactory/vueFactory';
 // import {createVue3Component} from '../frameworkFactory/vue3Factory';
@@ -42,6 +41,11 @@ export interface AmisRendererOption {
   framework?: string;
 }
 
+declare const window: Window & {
+  postMessage: any;
+  AmisCustomRenderers: any;
+};
+
 /**
  * registerRendererByType: 根据type类型注册amis普通渲染器、amis表单渲染器、amis表单控件渲染器
  *【方法参数说明】
@@ -80,7 +84,7 @@ export function registerRendererByType(
 
   if (curRendererOption && !curRendererOption.type) {
     console.error(
-      `${consoleTag}自定义组件注册失败，自定义组件类型（type）不能为空。`,
+      `${consoleTag}amis渲染器注册失败，渲染器类型（type）不能为空。`,
     );
   } else {
     // 修正framework数值
@@ -89,9 +93,9 @@ export function registerRendererByType(
     curRendererOption.usage = getUsage(curRendererOption.usage);
     // 当前支持注册的渲染器类型
     const registerMap: any = {
-      renderer: Renderer,
-      formitem: FormItem,
-      options: OptionsControl,
+      renderer: () => {}, // Renderer,
+      formitem: () => {}, // FormItem,
+      options: () => {}, // OptionsControl,
     };
 
     // 当前支持的技术栈类型
@@ -107,21 +111,59 @@ export function registerRendererByType(
     // 注册amis渲染器
     if (!registerMap[curRendererOption.usage]) {
       console.error(
-        `${consoleTag}自定义组件注册失败，不存在${curRendererOption.usage}自定义组件类型。`,
+        `${consoleTag}amis渲染器注册失败，暂不支持${curRendererOption.usage}组件类型。`,
       );
     } else {
+      /*
+      // 直接调用amis注册器进行注册
       registerMap[curRendererOption.usage]({
         type: curRendererOption.type,
         weight: curRendererOption.weight,
       })(curRendererComponent);
-      // 记录当前创建的amis自定义组件
-      console.info('注册了一个自定义amis组件:', {
-        type: curRendererOption.type,
-        weight: curRendererOption.weight,
-        component: curRendererComponent,
-        framework: curRendererOption.framework,
-        usage: curRendererOption.usage,
-      });
+      */
+
+      // 通过 postMessage 告知 amis 注册一个新的渲染器
+      if (window && window.postMessage) {
+        const newComponentType = AddAmisCustomRenderer(curRendererOption.type, {
+          type: curRendererOption.type,
+          weight: curRendererOption.weight,
+          usage: curRendererOption.usage,
+          framework: curRendererOption.framework,
+          component: curRendererComponent,
+        });
+        if (newComponentType) {
+          console.info(
+            `${consoleTag}触发注册amis渲染器(${newComponentType})事件`,
+          );
+          window.postMessage(
+            {
+              type: 'amis-renderer-register-event',
+              eventMsg: `${consoleTag}注册一个自定义amis渲染器`,
+              amisRenderer: {
+                type: newComponentType,
+                weight: curRendererOption.weight,
+                usage: curRendererOption.usage,
+              },
+            },
+            '*',
+          );
+        }
+      }
     }
   }
+}
+
+function AddAmisCustomRenderer(componentType: string, rendererData: any) {
+  if (window && !window.AmisCustomRenderers) {
+    window.AmisCustomRenderers = {};
+  }
+  if (!window.AmisCustomRenderers[componentType]) {
+    window.AmisCustomRenderers[componentType] = rendererData;
+    return componentType;
+  } else {
+    console.error(
+      `${consoleTag}注册amis渲染器失败，已存在重名渲染器(${componentType})。`,
+    );
+  }
+  return null;
 }

@@ -146,7 +146,7 @@ function AddCustomEditorPlugin(componentType: string, plugin: any) {
     return componentType;
   } else {
     console.error(
-      `${consoleTag}注册自定义插件失败，已存在同名插件(${componentType})。`,
+      `${consoleTag}注册自定义插件失败，已存在重名插件(${componentType})。`,
     );
   }
   return null;
