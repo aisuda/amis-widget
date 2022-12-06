@@ -1,7 +1,7 @@
 // import { Renderer, FormItem, OptionsControl } from 'amis-core';
 import { createJQComponent } from '../frameworkFactory/jqFactory';
-import { createVue2Component } from '../frameworkFactory/vueFactory';
-// import {createVue3Component} from '../frameworkFactory/vue3Factory';
+// import { createVue2Component } from '../frameworkFactory/vueFactory';
+import { createVue3Component } from '../frameworkFactory/vue3Factory';
 import {
   getFramework,
   Usage,
@@ -101,8 +101,8 @@ export function registerRendererByType(
     // 当前支持的技术栈类型
     const resolverMap: any = {
       react: (i: any) => i,
-      vue2: createVue2Component,
-      vue3: createVue2Component, // createVue3Component,
+      vue2: createVue3Component, // createVue2Component
+      vue3: createVue3Component,
       jquery: createJQComponent,
     };
     // 支持多技术栈

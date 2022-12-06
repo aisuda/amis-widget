@@ -1,7 +1,7 @@
 {
-  "name": "amis-widget",
-  "version": "3.0.3",
-  "description": "amis组件注册器（支持react、vue2.0和jQuery技术栈），用于注册amis渲染器、Editor插件",
+  "name": "vue3-amis-widget",
+  "version": "3.0.0",
+  "description": "amis组件注册器（支持react、vue3.0和jQuery技术栈），用于注册amis渲染器、Editor插件",
   "keywords": [
     "amis组件注册器",
     "amis自定义组件",
@@ -43,7 +43,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "jquery": "^3.5.1",
-    "vue": "^2.6.14"
+    "vue": "^3.2.33"
   },
   "devDependencies": {
     "react": "^16.8.6",
@@ -51,9 +51,9 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
     "@types/jquery": "^3.5.14",
-    "@types/react": "^16",
+    "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "amis-widget-cli": "^3.0.2",
+    "@wibetter/amis-widget-cli": "^3.0.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "monaco-editor-webpack-plugin": "6.0.0",
