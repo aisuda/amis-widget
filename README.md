@@ -1,16 +1,19 @@
-# amis-widget
-> 开发amis自定义组件的工具集（支持react、vue2.0和jQuery技术栈）
+# vue3-amis-widget
+> 开发amis自定义组件的工具集（支持react、vue3.0和jQuery技术栈）
 - 提供注册amis组件和amis-editor插件的方法；
-- 目前支持的技术栈：jQuery、vue2、react，vue3.0技术栈在vue3-amis-widget中支持；
+- 目前支持的技术栈：jQuery、vue3.0、react，vue2.0技术栈在[amis-widget](https://github.com/aisuda/amis-widget)中支持；
 - 支持的amis渲染器类型：renderer（amis普通渲染器）、formitem（amis表单渲染器）、options（amis表单控件渲染器）。
 
 ### 提供的方法
 - registerRendererByType: 根据type类型注册 amis普通渲染器、amis表单渲染器、amis表单控件渲染器
 - registerAmisEditorPlugin: 注册 amis-editor 插件
 
-### amis-widget 3.0 版本依赖说明
+### vue3-amis-widget 版本依赖说明
 - 2.0 版本支持 amis 和 amis-editor 的任何版本；
 - 3.0.0 以上版本需要 amis 2.5.2-beta.0 以上版本， amis-editor 5.2.1-beta.32 以上版本。
+
+### 特别说明
+- vue3-amis-widget 不能和 amis-widget 同时使用，即不支持同时使用 vue2 和 vue3 开发自定义组件。
 
 ### 在线Demo
 [点击访问在线Demo](https://aisuda.github.io/amis-widget/test/preview.html)
@@ -18,12 +21,12 @@
 ## 快速使用
 
 ```
-npm install --save amis-widget
+npm install --save vue3-amis-widget
 ```
 
 ## 注册amis组件
 ```tsx
-import { registerRendererByType } from 'amis-widget';
+import { registerRendererByType } from 'vue3-amis-widget';
 class MyReactSelect extends React.PureComponent {
   constructor() {
     super();
@@ -73,7 +76,7 @@ export default MyReactSelect;
 
 ## 注册amis-editor插件
 ```tsx
-import { registerAmisEditorPlugin } from 'amis-widget';
+import { registerAmisEditorPlugin } from 'vue3-amis-widget';
 
 class ReactSelectPlugin {
   rendererName = 'react-select'; // 对应的amis渲染器
