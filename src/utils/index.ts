@@ -1,5 +1,5 @@
 export const consoleTag = '[amis-widget]'; // 输出标记
-
+export * from './object';
 /**
  * 获取技术栈标识
  * 目的：兼容用户非标准写法

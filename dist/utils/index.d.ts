@@ -1,4 +1,5 @@
 export declare const consoleTag = "[amis-widget]";
+export * from './object';
 /**
  * 获取技术栈标识
  * 目的：兼容用户非标准写法

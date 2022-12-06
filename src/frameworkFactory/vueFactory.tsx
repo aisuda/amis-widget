@@ -4,7 +4,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Vue from 'vue';
-import { utils } from 'amis-core';
+import { extendObject } from '../utils';
 
 export function createVue2Component(vueObj: any) {
   if (!vueObj || (typeof vueObj !== 'function' && typeof vueObj !== 'object')) {
@@ -30,7 +30,7 @@ export function createVue2Component(vueObj: any) {
 
       // 传入的Vue属性
       this.vm = new Vue({
-        data: utils.extendObject(
+        data: extendObject(
           amisData,
           typeof data === 'function' ? data() : data,
         ),

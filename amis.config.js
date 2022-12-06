@@ -30,7 +30,7 @@ module.exports = {
     allowList: [], // ignoreNodeModules为true时生效
     externals: [],
     projectDir: ['src', 'demo', 'demo2', 'editor'],
-    template: resolve('./editor/index.html'), // 使用自己的html模板
+    // template: resolve('./editor/index.html'), // 使用自己的html模板
     // cssLoaderUrl: true,
     // cssLoaderUrlDir: 'editor/fontawesome-free',
     moduleRules: [], // 用于配置自定义loaders
@@ -39,7 +39,7 @@ module.exports = {
   dev: {
     entry: { // 调试模式的入口1（使用构建后的amis-widget）
       index: [
-        './editor/EditorDemo.jsx',
+        // './editor/EditorDemo.jsx',
         './demo/react-widget/index.js',
         './demo/react-widget/plugin/info-card-plugin.jsx',
         './demo/vue-widget/index.js',
@@ -58,12 +58,12 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: false,
     closeHotReload: false, // 是否关闭热更新
-    closeEditorClient: true, // 是否关闭自动注入editor
+    closeEditorClient: false, // 是否关闭自动注入editor
   },
   dev2: {
     entry: { // 本地调试模式的入口2（使用本地的amis-widget）
       index: [
-        './editor/EditorDemo.jsx',
+        // './editor/EditorDemo.jsx',
         './demo2/hello-jquery/hello-jquery.jsx',
         './demo2/hello-jquery/plugin/hello-jquery-plugin.jsx',
         './demo2/react-widget/index.js',
@@ -82,7 +82,7 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: false,
     closeHotReload: false, // 是否关闭热更新
-    closeEditorClient: true, // 是否关闭自动注入editor
+    closeEditorClient: false, // 是否关闭自动注入editor
   },
   linkDebug: {
     entry: { // 外链调试（爱速搭中预览本地自定义组件）

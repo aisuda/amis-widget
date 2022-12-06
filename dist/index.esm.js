@@ -4,7 +4,28 @@ import React from 'react';
 import 'jquery';
 import ReactDOM from 'react-dom';
 import Vue from 'vue';
-import { utils } from 'amis-core';
+
+// 方便取值的时候能够把上层的取到，但是获取的时候不会全部把所有的数据获取到。
+function cloneObject(target, persistOwnProps = true) {
+    const obj = target && target.__super
+        ? Object.create(target.__super, {
+            __super: {
+                value: target.__super,
+                writable: false,
+                enumerable: false
+            }
+        })
+        : Object.create(Object.prototype);
+    persistOwnProps &&
+        target &&
+        Object.keys(target).forEach(key => (obj[key] = target[key]));
+    return obj;
+}
+function extendObject(target, src, persistOwnProps = true) {
+    const obj = cloneObject(target, persistOwnProps);
+    src && Object.keys(src).forEach(key => (obj[key] = src[key]));
+    return obj;
+}
 
 const consoleTag = '[amis-widget]'; // 输出标记
 /**
@@ -277,7 +298,7 @@ function createVue2Component(vueObj) {
                 typeof vueObj === 'function' ? new vueObj() : vueObj);
             // 传入的Vue属性
             this.vm = new Vue({
-                data: utils.extendObject(amisData, typeof data === 'function' ? data() : data),
+                data: extendObject(amisData, typeof data === 'function' ? data() : data),
                 ...rest,
                 props: rest.props || {},
             });

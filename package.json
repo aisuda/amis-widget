@@ -1,6 +1,6 @@
 {
   "name": "amis-widget",
-  "version": "3.0.0",
+  "version": "3.0.3",
   "description": "amis组件注册器（支持react、vue2.0和jQuery技术栈），用于注册amis渲染器、Editor插件",
   "keywords": [
     "amis组件注册器",
@@ -46,38 +46,23 @@
     "vue": "^2.6.14"
   },
   "devDependencies": {
-    "amis": "^2.5.2-beta.0",
-    "amis-core": "^2.5.2-beta.0",
-    "amis-formula": "^2.5.2-beta.0",
-    "amis-ui": "^2.5.2-beta.0",
-    "amis-editor": "^5.2.1-beta.32",
-    "amis-editor-core": "^5.2.1-beta.32",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
     "@types/jquery": "^3.5.14",
-    "@types/react": "^18.0.24",
-    "@types/react-dom": "^18.0.8",
-    "amis-widget-cli": "^3.0.0-beta.13",
+    "@types/react": "^16",
+    "@types/react-dom": "^16.9.0",
+    "amis-widget-cli": "^3.0.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "monaco-editor-webpack-plugin": "6.0.0",
     "prettier": "^2.0.5"
   },
-  "peerDependencies": {
-    "amis": ">=2.5.2-beta.0",
-    "amis-core": ">=2.5.2-beta.0",
-    "amis-formula": ">=2.5.2-beta.0",
-    "amis-ui": ">=2.5.2-beta.0",
-    "amis-editor": ">=5.2.1-beta.32",
-    "amis-editor-core": ">=5.2.1-beta.32",
-    "mobx-react":  "*",
-    "react": ">=16.8.6",
-    "react-dom": ">=16.8.6"
-  },
   "engines": {
     "node": ">= 10.13.0",
-    "npm": ">= 6.4.1"
+    "npm": ">= 6.4.1",
+    "amis-core": ">= 2.5.2-beta.0",
+    "amis-editor-core": ">= 5.2.1-beta.32"
   }
 }

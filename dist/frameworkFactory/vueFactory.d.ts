@@ -15,10 +15,12 @@ export declare function createVue2Component(vueObj: any): {
             amisFunc: any;
         };
         render(): JSX.Element;
-        context: unknown;
+        context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callback?: (() => void) | undefined): void;
-        readonly props: Readonly<{}>;
+        readonly props: Readonly<{}> & Readonly<{
+            children?: React.ReactNode;
+        }>;
         state: Readonly<{}>;
         refs: {
             [key: string]: React.ReactInstance;

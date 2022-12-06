@@ -8,6 +8,10 @@
 - registerRendererByType: 根据type类型注册 amis普通渲染器、amis表单渲染器、amis表单控件渲染器
 - registerAmisEditorPlugin: 注册 amis-editor 插件
 
+### amis-widget 3.0 版本依赖说明
+- 2.0 版本支持 amis 和 amis-editor 的任何版本；
+- 3.0.0 以上版本需要 amis 2.5.2-beta.0 以上版本， amis-editor 5.2.1-beta.32 以上版本。
+
 ### 在线Demo
 [点击访问在线Demo](https://aisuda.github.io/amis-widget/test/preview.html)
 
