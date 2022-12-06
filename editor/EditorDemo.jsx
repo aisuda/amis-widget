@@ -1,6 +1,6 @@
 import * as React from 'react';
-// import ReactDOM from 'react-dom';
-import {createRoot} from 'react-dom/client';
+import ReactDOM from 'react-dom';
+// import {createRoot} from 'react-dom/client'; // react 18
 import {Editor, ShortcutKey} from 'amis-editor';
 import {__uri} from 'amis-core';
 import {Icon} from './icons/index';
@@ -145,14 +145,15 @@ class SchemaEditorDemo extends React.Component {
   }
 }
 
+/*
+// react >= 18
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<SchemaEditorDemo />);
+*/
 
-/*
 // react < 18
 ReactDOM.render(
   <SchemaEditorDemo />,
   document.getElementById('root'),
 );
-*/
