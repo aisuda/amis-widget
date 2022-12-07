@@ -15,21 +15,21 @@ export function getFramework(_framework?: string): string {
     case 'jq':
       curFramework = Framework.jquery;
       break;
-    case 'vue':
     case 'vue2':
     case 'vue 2':
     case 'vue2.0':
     case 'vue 2.0':
       curFramework = Framework.vue2;
+      console.error(
+        'vue3-amis-widget不支持vue2.0技术栈，请改用amis-widget支持。',
+      );
       break;
+    case 'vue':
     case 'vue3':
     case 'vue 3':
     case 'vue3.0':
     case 'vue 3.0':
       curFramework = Framework.vue3;
-      console.error(
-        'amis=widget不支持vue3.0技术栈，请改用vue3-amis-widget支持。',
-      );
       break;
     default:
       curFramework = Framework.react;
