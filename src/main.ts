@@ -11,3 +11,4 @@ export {
   BasePlugin,
 } from './function/registerAmisEditorPlugin';
 export { registerRendererByType } from './function/registerRendererByType';
+export { createVue3Component } from './frameworkFactory/vue3Factory';

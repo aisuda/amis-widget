@@ -460,4 +460,4 @@ function AddAmisCustomRenderer(componentType, rendererData) {
     return null;
 }
 
-export { registerAmisEditorPlugin, registerRendererByType };
+export { createVue3Component, registerAmisEditorPlugin, registerRendererByType };

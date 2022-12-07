@@ -2,6 +2,6 @@
  * vue3-amis-widget v3.0.1
  * author: fex
  * build tool: AKFun
- * build time: Wed Dec 07 2022 11:42:21 GMT+0800 (中国标准时间)
+ * build time: Wed Dec 07 2022 11:51:10 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
