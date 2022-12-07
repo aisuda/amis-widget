@@ -7,3 +7,4 @@
  */
 export { registerAmisEditorPlugin, getSchemaTpl, BasePlugin, } from './function/registerAmisEditorPlugin';
 export { registerRendererByType } from './function/registerRendererByType';
+export { createVue2Component } from './frameworkFactory/vueFactory';

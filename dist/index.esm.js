@@ -12,18 +12,18 @@ function cloneObject(target, persistOwnProps = true) {
             __super: {
                 value: target.__super,
                 writable: false,
-                enumerable: false
-            }
+                enumerable: false,
+            },
         })
         : Object.create(Object.prototype);
     persistOwnProps &&
         target &&
-        Object.keys(target).forEach(key => (obj[key] = target[key]));
+        Object.keys(target).forEach((key) => (obj[key] = target[key]));
     return obj;
 }
 function extendObject(target, src, persistOwnProps = true) {
     const obj = cloneObject(target, persistOwnProps);
-    src && Object.keys(src).forEach(key => (obj[key] = src[key]));
+    src && Object.keys(src).forEach((key) => (obj[key] = src[key]));
     return obj;
 }
 
@@ -459,4 +459,4 @@ function AddAmisCustomRenderer(componentType, rendererData) {
     return null;
 }
 
-export { registerAmisEditorPlugin, registerRendererByType };
+export { createVue2Component, registerAmisEditorPlugin, registerRendererByType };
