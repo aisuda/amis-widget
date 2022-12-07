@@ -12,9 +12,6 @@
 - 2.0 版本支持 amis 和 amis-editor 的任何版本；
 - 3.0.0 以上版本需要 amis 2.5.2-beta.0 以上版本， amis-editor 5.2.1-beta.32 以上版本。
 
-### 特别说明
-- vue3-amis-widget 不能和 amis-widget 同时使用，即不支持同时使用 vue2 和 vue3 开发自定义组件。
-
 ### 在线Demo
 [点击访问在线Demo](https://aisuda.github.io/amis-widget/test/preview.html)
 
