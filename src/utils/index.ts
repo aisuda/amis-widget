@@ -28,7 +28,7 @@ export function getFramework(_framework?: string): string {
     case 'vue 3.0':
       curFramework = Framework.vue3;
       console.error(
-        'amis=widget不支持vue3.0技术栈，请改用vue3-amis-widget支持。',
+        'amis-widget不支持vue3.0技术栈，请改用vue3-amis-widget支持。',
       );
       break;
     default:

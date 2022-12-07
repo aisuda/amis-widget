@@ -55,7 +55,7 @@ function getFramework(_framework) {
         case 'vue3.0':
         case 'vue 3.0':
             curFramework = Framework.vue3;
-            console.error('amis=widget不支持vue3.0技术栈，请改用vue3-amis-widget支持。');
+            console.error('amis-widget不支持vue3.0技术栈，请改用vue3-amis-widget支持。');
             break;
         default:
             curFramework = Framework.react;
