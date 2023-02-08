@@ -195,7 +195,7 @@ function registerPluginAction(NewEditorPlugin, rendererName) {
         const curEditorPluginName = rendererName || new NewEditorPlugin().rendererName;
         Object.assign(NewEditorPlugin.prototype, {
             isNpmCustomWidget: true,
-            name: curEditorPluginName,
+            rendererName: curEditorPluginName,
         });
         // registerEditorPlugin(NewEditorPlugin); // 3.0 无需直接注册为amis-editor插件
         // 通过 postMessage 告知 amis-editor 注册一个新的插件
