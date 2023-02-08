@@ -8,7 +8,7 @@
   rendererName = 'react-info-card';
   $schema = '/schemas/UnkownSchema.json';
   // 组件名称（组件面板显示的Title）
-  name = 'react-info-card';
+  name = 'react组件';
   description = '信息展示卡片';
   tags = ['自定义'];
 

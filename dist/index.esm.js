@@ -193,7 +193,7 @@ function registerPluginAction(NewEditorPlugin, rendererName) {
         const curEditorPluginName = rendererName || new NewEditorPlugin().rendererName;
         Object.assign(NewEditorPlugin.prototype, {
             isNpmCustomWidget: true,
-            name: curEditorPluginName,
+            rendererName: curEditorPluginName,
         });
         // registerEditorPlugin(NewEditorPlugin); // 3.0 无需直接注册为amis-editor插件
         // 通过 postMessage 告知 amis-editor 注册一个新的插件
@@ -294,8 +294,7 @@ function createVue2Component(vueObj) {
         }
         componentDidMount() {
             const { amisData, amisFunc } = this.resolveAmisProps();
-            const { data, ...rest } = (vueObj =
-                typeof vueObj === 'function' ? new vueObj() : vueObj);
+            const { data, ...rest } = (vueObj = typeof vueObj === 'function' ? new vueObj() : vueObj);
             // 传入的Vue属性
             this.vm = new Vue({
                 data: extendObject(amisData, typeof data === 'function' ? data() : data),

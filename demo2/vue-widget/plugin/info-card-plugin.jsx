@@ -8,7 +8,7 @@ export class InfoCardPlugin {
   rendererName = 'vue-info-card';
   $schema = '/schemas/UnkownSchema.json';
   // 组件名称（组件面板显示的Title）
-  name = 'vue-info-card';
+  name = 'vue组件';
   description = '信息展示卡片';
   tags = ['自定义'];
   icon = 'fa fa-file-code-o';

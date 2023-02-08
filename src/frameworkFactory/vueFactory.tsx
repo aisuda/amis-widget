@@ -24,10 +24,8 @@ export function createVue2Component(vueObj: any) {
 
     componentDidMount() {
       const { amisData, amisFunc } = this.resolveAmisProps();
-
       const { data, ...rest } = (vueObj =
         typeof vueObj === 'function' ? new vueObj() : vueObj);
-
       // 传入的Vue属性
       this.vm = new Vue({
         data: extendObject(
