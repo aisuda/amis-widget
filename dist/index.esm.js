@@ -294,7 +294,8 @@ function createVue2Component(vueObj) {
         }
         componentDidMount() {
             const { amisData, amisFunc } = this.resolveAmisProps();
-            const { data, ...rest } = (vueObj = typeof vueObj === 'function' ? new vueObj() : vueObj);
+            const { data, ...rest } = (vueObj =
+                typeof vueObj === 'function' ? new vueObj() : vueObj);
             // 传入的Vue属性
             this.vm = new Vue({
                 data: extendObject(amisData, typeof data === 'function' ? data() : data),
@@ -427,6 +428,7 @@ function registerRendererByType(newRenderer, rendererOption) {
                     usage: curRendererOption.usage,
                     framework: curRendererOption.framework,
                     component: curRendererComponent,
+                    config: curRendererOption
                 });
                 if (newComponentType) {
                     console.info(`${consoleTag}触发注册amis渲染器(${newComponentType})事件`);
@@ -437,6 +439,7 @@ function registerRendererByType(newRenderer, rendererOption) {
                             type: newComponentType,
                             weight: curRendererOption.weight,
                             usage: curRendererOption.usage,
+                            config: curRendererOption
                         },
                     }, '*');
                 }
