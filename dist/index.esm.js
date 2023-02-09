@@ -429,6 +429,7 @@ function registerRendererByType(newRenderer, rendererOption) {
                     usage: curRendererOption.usage,
                     framework: curRendererOption.framework,
                     component: curRendererComponent,
+                    config: curRendererOption
                 });
                 if (newComponentType) {
                     console.info(`${consoleTag}触发注册amis渲染器(${newComponentType})事件`);
@@ -439,6 +440,7 @@ function registerRendererByType(newRenderer, rendererOption) {
                             type: newComponentType,
                             weight: curRendererOption.weight,
                             usage: curRendererOption.usage,
+                            config: curRendererOption
                         },
                     }, '*');
                 }

@@ -130,6 +130,7 @@ export function registerRendererByType(
           usage: curRendererOption.usage,
           framework: curRendererOption.framework,
           component: curRendererComponent,
+          config: curRendererOption,
         });
         if (newComponentType) {
           console.info(
@@ -143,6 +144,7 @@ export function registerRendererByType(
                 type: newComponentType,
                 weight: curRendererOption.weight,
                 usage: curRendererOption.usage,
+                config: curRendererOption,
               },
             },
             '*',

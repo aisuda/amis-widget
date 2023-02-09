@@ -1,7 +1,7 @@
 /*!
- * vue3-amis-widget v3.0.5
+ * vue3-amis-widget v3.0.8
  * author: fex
  * build tool: AKFun
- * build time: Wed Feb 08 2023 20:17:32 GMT+0800 (中国标准时间)
+ * build time: Thu Feb 09 2023 14:20:57 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
