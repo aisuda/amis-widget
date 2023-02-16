@@ -2,6 +2,7 @@ import { BasePlugin } from 'amis-editor-core';
 export { BasePlugin, getSchemaTpl } from 'amis-editor-core';
 import React from 'react';
 import 'jquery';
+import { ScopedContext } from 'amis-core';
 import { createApp, isProxy, shallowRef, ref } from 'vue';
 
 // 方便取值的时候能够把上层的取到，但是获取的时候不会全部把所有的数据获取到。
@@ -290,9 +291,14 @@ function createVue3Component(vueObj) {
         app;
         vm;
         isUnmount;
-        constructor(props) {
+        // 指定 contextType 读取当前的 scope context。
+        // React 会往上找到最近的 scope Provider，然后使用它的值。
+        static contextType = ScopedContext;
+        constructor(props, context) {
             super(props);
             this.domRef = React.createRef();
+            const scoped = context;
+            scoped.registerComponent(this);
             this.resolveAmisProps = this.resolveAmisProps.bind(this);
         }
         componentDidMount() {
@@ -320,6 +326,8 @@ function createVue3Component(vueObj) {
         }
         componentWillUnmount() {
             this.isUnmount = true;
+            const scoped = this.context;
+            scoped.unRegisterComponent(this);
             this.app.unmount();
         }
         resolveAmisProps() {
@@ -344,6 +352,18 @@ function createVue3Component(vueObj) {
                 }
             });
             return { amisData, amisFunc };
+        }
+        /**
+         * amis事件动作处理:
+         * 在这里设置自定义组件对外暴露的动作，其他组件可以通过组件动作触发自定义组件的对应动作
+         */
+        doAction(action, args) {
+            if (this.vm && this.vm.doAction) {
+                this.vm.doAction(action, args);
+            }
+            else {
+                console.warn('自定义组件中不存在doAction。');
+            }
         }
         render() {
             return React.createElement("div", { ref: this.domRef });
@@ -429,7 +449,7 @@ function registerRendererByType(newRenderer, rendererOption) {
                     usage: curRendererOption.usage,
                     framework: curRendererOption.framework,
                     component: curRendererComponent,
-                    config: curRendererOption
+                    config: curRendererOption,
                 });
                 if (newComponentType) {
                     console.info(`${consoleTag}触发注册amis渲染器(${newComponentType})事件`);
@@ -440,7 +460,7 @@ function registerRendererByType(newRenderer, rendererOption) {
                             type: newComponentType,
                             weight: curRendererOption.weight,
                             usage: curRendererOption.usage,
-                            config: curRendererOption
+                            config: curRendererOption,
                         },
                     }, '*');
                 }

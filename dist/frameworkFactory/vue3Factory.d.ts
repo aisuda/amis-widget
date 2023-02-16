@@ -2,8 +2,9 @@
  * @file 自定义组件所需的 vue3.0 对接
  */
 import React from 'react';
+import { IScopedContext, RendererProps } from 'amis-core';
 export declare function createVue3Component(vueObj: any): {
-    new (props: any): {
+    new (props: RendererProps, context: IScopedContext): {
         domRef: any;
         app: any;
         vm: any;
@@ -15,26 +16,31 @@ export declare function createVue3Component(vueObj: any): {
             amisData: any;
             amisFunc: any;
         };
+        /**
+         * amis事件动作处理:
+         * 在这里设置自定义组件对外暴露的动作，其他组件可以通过组件动作触发自定义组件的对应动作
+         */
+        doAction(action: any, args: object): void;
         render(): JSX.Element;
         context: any;
-        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<any>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
+        setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<RendererProps>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callback?: (() => void) | undefined): void;
-        readonly props: Readonly<any> & Readonly<{
+        readonly props: Readonly<RendererProps> & Readonly<{
             children?: React.ReactNode;
         }>;
         state: Readonly<{}>;
         refs: {
             [key: string]: React.ReactInstance;
         };
-        shouldComponentUpdate?(nextProps: Readonly<any>, nextState: Readonly<{}>, nextContext: any): boolean;
+        shouldComponentUpdate?(nextProps: Readonly<RendererProps>, nextState: Readonly<{}>, nextContext: any): boolean;
         componentDidCatch?(error: Error, errorInfo: React.ErrorInfo): void;
-        getSnapshotBeforeUpdate?(prevProps: Readonly<any>, prevState: Readonly<{}>): any;
+        getSnapshotBeforeUpdate?(prevProps: Readonly<RendererProps>, prevState: Readonly<{}>): any;
         componentWillMount?(): void;
         UNSAFE_componentWillMount?(): void;
-        componentWillReceiveProps?(nextProps: Readonly<any>, nextContext: any): void;
-        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<any>, nextContext: any): void;
-        componentWillUpdate?(nextProps: Readonly<any>, nextState: Readonly<{}>, nextContext: any): void;
-        UNSAFE_componentWillUpdate?(nextProps: Readonly<any>, nextState: Readonly<{}>, nextContext: any): void;
+        componentWillReceiveProps?(nextProps: Readonly<RendererProps>, nextContext: any): void;
+        UNSAFE_componentWillReceiveProps?(nextProps: Readonly<RendererProps>, nextContext: any): void;
+        componentWillUpdate?(nextProps: Readonly<RendererProps>, nextState: Readonly<{}>, nextContext: any): void;
+        UNSAFE_componentWillUpdate?(nextProps: Readonly<RendererProps>, nextState: Readonly<{}>, nextContext: any): void;
     };
-    contextType?: React.Context<any> | undefined;
+    contextType: React.Context<IScopedContext>;
 } | undefined;

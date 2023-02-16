@@ -2,6 +2,7 @@
  * @file 自定义组件所需的 vue3.0 对接
  */
 import React from 'react';
+import { ScopedContext, IScopedContext, RendererProps } from 'amis-core';
 // @ts-ignore
 import { createApp, getCurrentInstance, ref, isProxy, shallowRef } from 'vue';
 import { isObject, extendObject } from '../utils';
@@ -11,15 +12,23 @@ export function createVue3Component(vueObj: any) {
     return;
   }
 
-  class VueFactory extends React.Component<any> {
+  class VueFactory extends React.Component<RendererProps> {
     domRef: any;
     app: any;
     vm: any;
     isUnmount: boolean;
 
-    constructor(props: any) {
+    // 指定 contextType 读取当前的 scope context。
+    // React 会往上找到最近的 scope Provider，然后使用它的值。
+    static contextType = ScopedContext;
+
+    constructor(props: RendererProps, context: IScopedContext) {
       super(props);
       this.domRef = React.createRef();
+
+      const scoped = context;
+      scoped.registerComponent(this);
+
       this.resolveAmisProps = this.resolveAmisProps.bind(this);
     }
 
@@ -53,6 +62,8 @@ export function createVue3Component(vueObj: any) {
 
     componentWillUnmount() {
       this.isUnmount = true;
+      const scoped = this.context as IScopedContext;
+      scoped.unRegisterComponent(this);
       this.app.unmount();
     }
 
@@ -76,6 +87,18 @@ export function createVue3Component(vueObj: any) {
         }
       });
       return { amisData, amisFunc };
+    }
+
+    /**
+     * amis事件动作处理:
+     * 在这里设置自定义组件对外暴露的动作，其他组件可以通过组件动作触发自定义组件的对应动作
+     */
+    doAction(action: any, args: object) {
+      if (this.vm && this.vm.doAction) {
+        this.vm.doAction(action, args);
+      } else {
+        console.warn('自定义组件中不存在doAction。');
+      }
     }
 
     render() {
