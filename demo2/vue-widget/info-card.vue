@@ -24,28 +24,14 @@
 
 export default {
   props: {
-    title: {
-      type: String,
-      default:
-        'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
-    },
-    backgroundImage: {
-      type: String,
-      default:
-        'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
-    },
-    img_count: {
-      type: Number,
-      default: 3,
-    },
-    comment_count: {
-      type: Number,
-      default: 2021,
-    },
     renderChild: Function,
   },
   data() {
     return {
+      title: 'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
+      backgroundImage: 'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg',
+      img_count: 3,
+      comment_count: 2021,
       isAlive: true,
       isFirstVisit: true,
     };
