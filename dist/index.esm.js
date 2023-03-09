@@ -305,22 +305,26 @@ function createVue3Component(vueObj) {
             const { amisData, amisFunc } = this.resolveAmisProps();
             const { data, ...rest } = (vueObj =
                 typeof vueObj === 'function' ? new vueObj() : vueObj);
+            const vueData = typeof data === 'function' ? data() : data;
+            const curVueData = extendObject(vueData, amisData);
+            console.log('curVueData:', curVueData);
             // 传入的Vue属性
             this.app = createApp({
-                data: () => extendObject(amisData, typeof data === 'function' ? data() : data),
+                data: () => curVueData,
                 ...rest,
                 props: extendObject(amisFunc, rest.props || {}),
             });
             this.vm = this.app.mount(this.domRef.current);
         }
         componentDidUpdate() {
+            // 备注：vue3 不支持外部更新props。
             if (!this.isUnmount) {
                 const { amisData } = this.resolveAmisProps();
                 if (this.vm) {
-                    // this.vm.$data.props = amisData; // 此方法无效
                     Object.keys(amisData).forEach((key) => {
                         this.vm[key] = amisData[key];
                     });
+                    this.vm.$forceUpdate();
                 }
             }
         }

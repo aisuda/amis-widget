@@ -1,6 +1,6 @@
 {
   "name": "vue3-amis-widget",
-  "version": "3.0.10",
+  "version": "3.1.0",
   "description": "amis组件注册器（支持react、vue2.0、vue3.0和jQuery技术栈），主要用于注册amis渲染器、amis-editor插件。",
   "keywords": [
     "amis组件注册器",
@@ -53,7 +53,7 @@
     "@types/jquery": "^3.5.14",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "@wibetter/amis-widget-cli": "^3.0.16",
+    "@wibetter/amis-widget-cli": "^3.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "monaco-editor-webpack-plugin": "6.0.0",
@@ -62,7 +62,7 @@
   "engines": {
     "node": ">= 10.13.0",
     "npm": ">= 6.4.1",
-    "amis-core": ">= 2.5.2-beta.0",
-    "amis-editor-core": ">= 5.2.1-beta.32"
+    "amis-core": ">= 5.2.5",
+    "amis-editor-core": ">= 5.2.5"
   }
 }
