@@ -30,7 +30,7 @@ module.exports = {
     allowList: [], // ignoreNodeModules为true时生效
     externals: [],
     projectDir: ['src', 'demo', 'demo2', 'editor'],
-    // template: resolve('./editor/index.html'), // 使用自己的html模板
+    template: resolve('./editor/index.html'), // 使用自己的html模板
     // cssLoaderUrl: true,
     // cssLoaderUrlDir: 'editor/fontawesome-free',
     moduleRules: [], // 用于配置自定义loaders
