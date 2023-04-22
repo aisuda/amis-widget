@@ -43,6 +43,11 @@ export function createJQComponent(jqueryObj: any) {
       this._render();
     }
 
+    reload() {
+      const reload = this.props.reloadOptions;
+      reload && reload();
+    }
+
     _render() {
       if (!this.dom) {
         return;
