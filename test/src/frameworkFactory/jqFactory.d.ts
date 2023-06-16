@@ -12,7 +12,7 @@ export declare function createJQComponent(jqueryObj: any): {
         componentWillUnmount(): void;
         domRef(dom: any): void;
         _render(): void;
-        render(): JSX.Element;
+        render(): React.JSX.Element;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<{}>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callback?: (() => void) | undefined): void;

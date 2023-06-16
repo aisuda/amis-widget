@@ -20,7 +20,7 @@ export declare function createVue2Component(vueObj: any): {
          * 在这里设置自定义组件对外暴露的动作，其他组件可以通过组件动作触发自定义组件的对应动作
          */
         doAction(action: any, args: object): void;
-        render(): JSX.Element;
+        render(): React.JSX.Element;
         context: any;
         setState<K extends never>(state: {} | ((prevState: Readonly<{}>, props: Readonly<RendererProps>) => {} | Pick<{}, K> | null) | Pick<{}, K> | null, callback?: (() => void) | undefined): void;
         forceUpdate(callback?: (() => void) | undefined): void;
