@@ -63,7 +63,7 @@ module.exports = {
   dev: {
     entry: { // 本地调试模式的入口2（使用本地的amis-widget）
       index: [
-        // './editor/EditorDemo.jsx',
+        './editor/EditorDemo.jsx',
         './demo2/hello-jquery/hello-jquery.jsx',
         './demo2/hello-jquery/plugin/hello-jquery-plugin.jsx',
         './demo2/react-widget/index.js',
@@ -82,7 +82,7 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: false,
     closeHotReload: false, // 是否关闭热更新
-    closeEditorClient: false, // 是否关闭自动注入editor
+    closeEditorClient: true, // 是否关闭自动注入editor
   },
   linkDebug: {
     entry: { // 外链调试（爱速搭中预览本地自定义组件）

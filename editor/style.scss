@@ -252,6 +252,10 @@ $disabled-bg-color: #f7f7f9; // 禁用背景颜色
     overflow-x: hidden;
     overflow-y: auto;
   }
+
+  input {
+    height: auto !important;
+  }
 }
 
 .resizer {
