@@ -53,7 +53,7 @@
     "@types/jquery": "^3.5.14",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "@wibetter/amis-widget-cli": "^3.1.0",
+    "@wibetter/amis-widget-cli": "^3.1.10",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "monaco-editor-webpack-plugin": "6.0.0",
