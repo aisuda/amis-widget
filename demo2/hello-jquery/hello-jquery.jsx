@@ -11,6 +11,11 @@ class MyJQueryBtn {
     $('#btn').click(this.test.bind(this, props));
   };
 
+
+  reload() {
+    console.log('触发jquery自定义组件relod。');
+  }
+
   test(props) {
     props.onAction(
       null,

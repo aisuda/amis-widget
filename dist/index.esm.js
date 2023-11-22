@@ -2,9 +2,9 @@ import { BasePlugin } from 'amis-editor-core';
 export { BasePlugin, getSchemaTpl } from 'amis-editor-core';
 import React from 'react';
 import 'jquery';
+import { ScopedContext } from 'amis-core';
 import ReactDOM from 'react-dom';
 import Vue from 'vue';
-import { ScopedContext } from 'amis-core';
 
 // 方便取值的时候能够把上层的取到，但是获取的时候不会全部把所有的数据获取到。
 function cloneObject(target, persistOwnProps = true) {
@@ -236,9 +236,12 @@ function createJQComponent(jqueryObj) {
     class JQFactory extends React.Component {
         dom;
         instance;
-        constructor(props) {
+        static contextType = ScopedContext;
+        constructor(props, context) {
             super(props);
             this.domRef = this.domRef.bind(this);
+            const scoped = context;
+            scoped.registerComponent(this);
             this.instance =
                 typeof jqueryObj === 'function' ? new jqueryObj() : jqueryObj;
         }
@@ -251,8 +254,33 @@ function createJQComponent(jqueryObj) {
             onUpdate && onUpdate.apply(this.instance, [this.props, prevProps]);
         }
         componentWillUnmount() {
+            const scoped = this.context;
+            scoped.unRegisterComponent(this);
             const { onUnmout } = this.instance;
             onUnmout && onUnmout.apply(this.instance, this.props);
+        }
+        /**
+        * reload动作处理
+        */
+        reload() {
+            if (this.instance && this.instance.reload) {
+                this.instance.reload();
+            }
+            else {
+                console.warn('自定义组件中暂不支持reload动作。');
+            }
+        }
+        /**
+         * amis事件动作处理:
+         * 在这里设置自定义组件对外暴露的动作，其他组件可以通过组件动作触发自定义组件的对应动作
+         */
+        doAction(action, args) {
+            if (this.instance && this.instance.doAction) {
+                this.instance.doAction(action, args);
+            }
+            else {
+                console.warn('自定义组件中不存在doAction。');
+            }
         }
         domRef(dom) {
             this.instance.$root = this.dom = dom;
@@ -351,6 +379,17 @@ function createVue2Component(vueObj) {
                 }
             });
             return { amisData, amisFunc };
+        }
+        /**
+         * reload动作处理
+         */
+        reload() {
+            if (this.vm && this.vm.reload) {
+                this.vm.reload();
+            }
+            else {
+                console.warn('自定义组件暂不支持reload动作。');
+            }
         }
         /**
          * amis事件动作处理:

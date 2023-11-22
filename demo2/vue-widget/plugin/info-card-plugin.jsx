@@ -16,6 +16,9 @@ export class InfoCardPlugin {
     type: 'vue-info-card',
     label: 'vue-info-card',
     name: 'vue-info-card',
+    title: 'hello',
+    img_count: 5,
+    comment_count: 1024,
     body: [ // 容器类字段
      {
        "type": "tpl",

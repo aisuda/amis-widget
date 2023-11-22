@@ -14,6 +14,11 @@ export default class InfoCard extends React.PureComponent {
       return `${Math.floor(agreeData / 1000) / 10}w`;
     }
   }
+
+  reload() {
+    console.log('触发自定义组件relod。');
+  }
+  
   render() {
     const { title, backgroundImage, img_count, comment_count, render, body } = this.props;
     const curBackgroundImage =

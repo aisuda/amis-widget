@@ -72,6 +72,9 @@ export default {
         return `${Math.floor(agreeData / 1000) / 10}w`;
       }
     },
+    reload() {
+      console.log('触发vue自定义组件relod。');
+    },
     /**
      * 添加amis事件动作:
      * 在这里设置自定义组件对外暴露的动作，其他组件可以通过组件动作触发自定义组件的对应动作
