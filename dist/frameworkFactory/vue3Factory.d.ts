@@ -17,6 +17,10 @@ export declare function createVue3Component(vueObj: any): {
             amisFunc: any;
         };
         /**
+         * reload动作处理
+         */
+        reload(): void;
+        /**
          * amis事件动作处理:
          * 在这里设置自定义组件对外暴露的动作，其他组件可以通过组件动作触发自定义组件的对应动作
          */

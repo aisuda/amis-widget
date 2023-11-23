@@ -66,6 +66,9 @@ export default {
         return `${Math.floor(agreeData / 1000) / 10}w`;
       }
     },
+    reload() {
+      console.log('触发vue自定义组件relod。');
+    }
   },
 };
 </script>
