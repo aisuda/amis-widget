@@ -48,6 +48,7 @@
   "devDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "@qiun/ucharts": "^2.4.3-20220505",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
     "@types/jquery": "^3.5.14",

@@ -70,6 +70,8 @@ module.exports = {
         './demo2/react-widget/plugin/info-card-plugin.jsx',
         './demo2/vue-widget/index.js',
         './demo2/vue-widget/plugin/info-card-plugin.jsx',
+        './demo2/uni-area-chart/plugin.ts',
+        './demo2/uni-area-chart/renderer.ts',
       ],
     },
     // 用于开启本地调试模式的相关配置信息

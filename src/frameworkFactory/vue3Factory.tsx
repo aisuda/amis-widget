@@ -39,7 +39,6 @@ export function createVue3Component(vueObj: any) {
       const vueData = typeof data === 'function' ? data() : data;
 
       const curVueData = extendObject(vueData, amisData);
-      console.log('curVueData:', curVueData);
 
       // 传入的Vue属性
       this.app = createApp({
