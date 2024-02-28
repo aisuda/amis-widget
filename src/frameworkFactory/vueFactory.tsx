@@ -15,6 +15,7 @@ export function createVue2Component(vueObj: any) {
   class VueFactory extends React.Component<RendererProps> {
     domRef: any;
     vm: any;
+    isUnmount: boolean;
 
     // 指定 contextType 读取当前的 scope context。
     // React 会往上找到最近的 scope Provider，然后使用它的值。
@@ -35,15 +36,15 @@ export function createVue2Component(vueObj: any) {
       const { amisData, amisFunc } = this.resolveAmisProps();
       const { data, ...rest } = (vueObj =
         typeof vueObj === 'function' ? new vueObj() : vueObj);
+      const vueData = typeof data === 'function' ? data() : data;
+      const curVueData = extendObject(vueData, amisData);
       // 传入的Vue属性
       this.vm = new Vue({
-        data: extendObject(
-          amisData,
-          typeof data === 'function' ? data() : data,
-        ),
         ...rest,
-        props: rest.props || {},
+        data: () => curVueData,
+        props: extendObject(amisFunc, rest.props || {}),
       });
+
       Object.keys(amisFunc).forEach((key) => {
         this.vm.$props[key] = amisFunc[key];
         if (key === 'render') {
@@ -57,7 +58,6 @@ export function createVue2Component(vueObj: any) {
           };
         }
       });
-
       this.domRef.current.appendChild(this.vm.$mount().$el);
     }
 
@@ -79,15 +79,19 @@ export function createVue2Component(vueObj: any) {
     }
 
     componentDidUpdate() {
-      Object.keys(this.props).forEach(
-        (key) =>
-          typeof this.props[key] !== 'function' &&
-          (this.vm[key] = this.props[key]),
-      );
-      this.vm.$forceUpdate();
+      if (!this.isUnmount) {
+        const { amisData } = this.resolveAmisProps();
+        if (this.vm) {
+          Object.keys(amisData).forEach((key) => {
+            this.vm[key] = amisData[key];
+          });
+          this.vm.$forceUpdate();
+        }
+      }
     }
 
     componentWillUnmount() {
+      this.isUnmount = true;
       const scoped = this.context as IScopedContext;
       scoped.unRegisterComponent(this);
       this.vm.$destroy();

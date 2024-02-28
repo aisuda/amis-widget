@@ -12,8 +12,8 @@ export declare function createJQComponent(jqueryObj: any): {
         componentDidUpdate(prevProps: any): void;
         componentWillUnmount(): void;
         /**
-        * reload动作处理
-        */
+         * reload动作处理
+         */
         reload(): void;
         /**
          * amis事件动作处理:

@@ -7,6 +7,7 @@ export declare function createVue2Component(vueObj: any): {
     new (props: RendererProps, context: IScopedContext): {
         domRef: any;
         vm: any;
+        isUnmount: boolean;
         componentDidMount(): void;
         renderChild(schemaPosition: string, childSchema: any, insertElemId: string): void | null;
         componentDidUpdate(): void;

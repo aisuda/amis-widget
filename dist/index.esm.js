@@ -260,8 +260,8 @@ function createJQComponent(jqueryObj) {
             onUnmout && onUnmout.apply(this.instance, this.props);
         }
         /**
-        * reload动作处理
-        */
+         * reload动作处理
+         */
         reload() {
             if (this.instance && this.instance.reload) {
                 this.instance.reload();
@@ -315,6 +315,7 @@ function createVue2Component(vueObj) {
     class VueFactory extends React.Component {
         domRef;
         vm;
+        isUnmount;
         // 指定 contextType 读取当前的 scope context。
         // React 会往上找到最近的 scope Provider，然后使用它的值。
         static contextType = ScopedContext;
@@ -330,11 +331,13 @@ function createVue2Component(vueObj) {
             const { amisData, amisFunc } = this.resolveAmisProps();
             const { data, ...rest } = (vueObj =
                 typeof vueObj === 'function' ? new vueObj() : vueObj);
+            const vueData = typeof data === 'function' ? data() : data;
+            const curVueData = extendObject(vueData, amisData);
             // 传入的Vue属性
             this.vm = new Vue({
-                data: extendObject(amisData, typeof data === 'function' ? data() : data),
                 ...rest,
-                props: rest.props || {},
+                data: () => curVueData,
+                props: extendObject(amisFunc, rest.props || {}),
             });
             Object.keys(amisFunc).forEach((key) => {
                 this.vm.$props[key] = amisFunc[key];
@@ -357,11 +360,18 @@ function createVue2Component(vueObj) {
             return childElemCont;
         }
         componentDidUpdate() {
-            Object.keys(this.props).forEach((key) => typeof this.props[key] !== 'function' &&
-                (this.vm[key] = this.props[key]));
-            this.vm.$forceUpdate();
+            if (!this.isUnmount) {
+                const { amisData } = this.resolveAmisProps();
+                if (this.vm) {
+                    Object.keys(amisData).forEach((key) => {
+                        this.vm[key] = amisData[key];
+                    });
+                    this.vm.$forceUpdate();
+                }
+            }
         }
         componentWillUnmount() {
+            this.isUnmount = true;
             const scoped = this.context;
             scoped.unRegisterComponent(this);
             this.vm.$destroy();
